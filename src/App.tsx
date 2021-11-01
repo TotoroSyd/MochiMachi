@@ -1,11 +1,12 @@
 // import logo from "./logo.svg";
 // import "./App.css";
-import Login from "./components/team_login";
+
+import LandingPage from "./components/landing_page";
 
 function App() {
   return (
     <div className="App">
-      <Login></Login>
+      <LandingPage></LandingPage>
     </div>
   );
 }
