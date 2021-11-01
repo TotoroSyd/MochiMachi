@@ -7,7 +7,7 @@ export default function Login() {
    */
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  console.log(username, password);
   // Store value in state on change in formm
   const handleUserNameChange = (event: ChangeEvent) => {
     event.preventDefault();
