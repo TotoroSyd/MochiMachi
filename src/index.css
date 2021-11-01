@@ -17,6 +17,6 @@ code {
 }
 
 .login {
-  background-image: url('./loginbackground.png');
+  background-image: url("./loginbackground.png");
   background-size: cover;
 }
