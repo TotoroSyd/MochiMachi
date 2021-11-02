@@ -17,6 +17,22 @@ code {
 }
 
 .login {
-  background-image: url("./loginbackground.png");
+  /* background-image: url("./loginbackground.png"); */
+  /* background-size: cover; */
+  background-color: #e8e3de;
+}
+.banner {
+  background-image: url("./mochiWallpaper.jpeg");
+  background-repeat: no-repeat;
   background-size: cover;
+}
+.button {
+  border-color: #62473a;
+  border-width: medium;
+  color: #62473a;
+}
+
+.button:hover {
+  background-color: #62473a;
+  color: #e8e3de;
 }
