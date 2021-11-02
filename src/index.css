@@ -22,7 +22,7 @@ code {
   background-color: #e8e3de;
 }
 .banner {
-  background-image: url("./mochiWallpaper.jpeg");
+  /* background-image: url("./mochiWallpaper.jpeg"); */
   background-repeat: no-repeat;
   background-size: cover;
 }
