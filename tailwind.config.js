@@ -1,5 +1,11 @@
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  // To make tailwind css loaded when deploying with Vercel
+  purge: [
+    "./src/**/*.html",
+    "./src/**/*.js",
+    "./src/**/*.jsx",
+    "./public/**/*.html",
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
