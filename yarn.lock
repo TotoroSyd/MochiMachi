@@ -8546,12 +8546,12 @@ postcss-focus-visible@^4.0.0:
   dependencies:
     postcss "^7.0.2"
 
-postcss-focus-within@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/postcss-focus-within/-/postcss-focus-within-3.0.0.tgz#763b8788596cee9b874c999201cdde80659ef680"
-  integrity sha512-W0APui8jQeBKbCGZudW37EeMCjDeVxKgiYfIIEo8Bdh5SpB9sxds/Iq8SEuzS0Q4YFOlG7EPFulbbxujpkrV2w==
+postcss-focus-within@^3.0.0, postcss-focus-within@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-focus-within/-/postcss-focus-within-4.0.0.tgz#c6b428e13403ba053704ce338514584b6cd880c3"
+  integrity sha512-fO+5/StoHEswmdDQ7V3rhlx4i1cUOjQItae3scu8Nki5h35/fvr8J1vakFnSN4gZ7zzthflpedVsMZPDXNzxaA==
   dependencies:
-    postcss "^7.0.2"
+    postcss "^7.0.27"
 
 postcss-font-variant@^4.0.0:
   version "4.0.1"
