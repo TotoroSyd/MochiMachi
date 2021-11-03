@@ -68,3 +68,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### References
+
+[https://www.chopstickchronicles.com/strawberry-daifuku/](https://www.chopstickchronicles.com/strawberry-daifuku/)
+[https://tokyotreat.com/blog/10-types-of-mochi](https://tokyotreat.com/blog/10-types-of-mochi)
+[https://www.8days.sg/eatanddrink/recipes/gula-melaka-warabi-mochi-a-singaporean-spin-on-the-traditional-13041576](https://www.8days.sg/eatanddrink/recipes/gula-melaka-warabi-mochi-a-singaporean-spin-on-the-traditional-13041576)

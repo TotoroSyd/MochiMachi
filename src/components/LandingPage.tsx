@@ -1,4 +1,4 @@
-// import React from "react";
+import ProductCard from "./ProductCard";
 
 export default function LandingPage() {
   return (
@@ -20,7 +20,9 @@ export default function LandingPage() {
             </button>
           </div>
         </section>
-        <section className="h-screen w-4/5 bg-pink-200 px-2">shop</section>
+        <section className="h-screen w-4/5 bg-pink-200 px-2">
+          <ProductCard></ProductCard>
+        </section>
       </div>
     </div>
   );
