@@ -1,4 +1,3 @@
-import ProductCard from "./ProductCard";
 import sakura_mochi from "../media/Sakura-mochi.jpeg";
 import ichigo_daifuku from "../media/Strawberry-Daifuku.jpeg";
 import warabi_mochi from "../media/warabi-mochi.jpeg";
