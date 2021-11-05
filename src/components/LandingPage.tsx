@@ -34,26 +34,56 @@ export default function LandingPage() {
       <section className="grid w-4/5 gap-y-6" id="product_section">
         <section className="grid grid-cols-2 gap-x-6">
           <div className="grid grid-cols-1">
-            <img src={sakura_mochi} alt="sakura-mochi" className="w-full" />
+            <div className="image">
+              <img
+                src={sakura_mochi}
+                alt="sakura-mochi"
+                className="w-full image__img"
+              />
+              <div className="image__overlay text-4xl w-full h-14">
+                <p>Sakura Mochi</p>
+              </div>
+            </div>
             <div className="text-center text-5xl w-full">
               A sign of the season
             </div>
           </div>
-          <img src={ichigo_daifuku} alt="strawberry-mochi" className="w-full" />
+          <div className="image">
+            <img
+              src={ichigo_daifuku}
+              alt="strawberry-mochi"
+              className="w-full image__img"
+            />
+            <div className="image__overlay text-4xl w-full h-14">
+              <p>Ichigo Daifuku</p>
+            </div>
+          </div>
         </section>
 
         <section className="grid grid-cols-2 gap-x-6">
-          <img
-            src={warabi_mochi}
-            alt="mochi-soybean-powder"
-            className="w-full"
-          />
-          <div className="grid grid-cols-1">
+          <div className="image">
             <img
-              src={hishi_mochi}
-              alt="hishi-diamond-mochi"
-              className="w-full"
+              src={warabi_mochi}
+              alt="mochi-soybean-powder"
+              className="w-full image__img"
             />
+            <div className="image__overlay text-4xl w-full h-14">
+              <p>Warabi Mochi</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1">
+            <div className="image">
+              <img
+                src={hishi_mochi}
+                alt="hishi-diamond-mochi"
+                className="w-full image__img"
+              />
+              <div className="image__overlay text-4xl w-full h-14">
+                <p>Hishi Mochi</p>
+              </div>
+            </div>
+
             <div className="text-center text-5xl leading-relaxed w-full">
               A symbol of good fortune
             </div>

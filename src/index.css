@@ -37,3 +37,18 @@ code {
   background-color: #62473a;
   color: #e8e3de;
 }
+
+.image {
+  position: relative;
+}
+
+.image__overlay {
+  position: absolute;
+  top:0;
+  left:0;
+  color: #62473a;
+  background: rgba(240, 237, 237, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
