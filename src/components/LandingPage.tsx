@@ -23,7 +23,7 @@ export default function LandingPage() {
             type="button"
             className="button bg-transparent font-bold py-2 px-4 rounded-full"
           >
-            Order Now
+            <a href="#product_section">Order Now</a>
           </button>
         </div>
       </section>
@@ -31,7 +31,7 @@ export default function LandingPage() {
         Welcome to Mochi Machi - your home for authentic, freshmade Japanese
         Mochi.
       </section>
-      <section className="grid w-4/5 gap-y-6">
+      <section className="grid w-4/5 gap-y-6" id="product_section">
         <section className="grid grid-cols-2 gap-x-6">
           <div className="grid grid-cols-1">
             <img src={sakura_mochi} alt="sakura-mochi" className="w-full" />
