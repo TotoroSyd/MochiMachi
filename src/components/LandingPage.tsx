@@ -3,6 +3,7 @@ import ichigo_daifuku from "../media/Strawberry-Daifuku.jpeg";
 import warabi_mochi from "../media/warabi-mochi.jpeg";
 import hishi_mochi from "../media/Hishi-Mochi.jpeg";
 import mochi_machi_logo from "../media/MochiMachiLogo_white_rsize.png";
+import Footer from "./Footer";
 
 export default function LandingPage() {
   return (
@@ -90,6 +91,7 @@ export default function LandingPage() {
           </div>
         </section>
       </section>
+      <Footer></Footer>
     </body>
   );
 }
