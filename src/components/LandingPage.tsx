@@ -12,7 +12,7 @@ export default function LandingPage() {
   // let [openModal, setOpenModal] = useState(false);
 
   return (
-    <body className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center">
       <section className="h-screen w-screen px-2 pb-6">
         <nav>
           <img
@@ -100,8 +100,12 @@ export default function LandingPage() {
           </div>
         </section>
       </section>
-      <ProductCard></ProductCard>
+      <ProductCard
+        product_name={"Test Mochi"}
+        product_price={14}
+        product_description={"mochi machi is the best"}
+      ></ProductCard>
       <Footer></Footer>
-    </body>
+    </div>
   );
 }
