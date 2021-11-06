@@ -1,11 +1,16 @@
+// import { useState } from "react";
 import sakura_mochi from "../media/Sakura-mochi.jpeg";
 import ichigo_daifuku from "../media/Strawberry-Daifuku.jpeg";
 import warabi_mochi from "../media/warabi-mochi.jpeg";
 import hishi_mochi from "../media/Hishi-Mochi.jpeg";
 import mochi_machi_logo from "../media/MochiMachiLogo_white_rsize.png";
 import Footer from "./Footer";
+import ProductCard from "./ProductCard";
 
 export default function LandingPage() {
+  // User clicks on a product photo, a modal opens
+  // let [openModal, setOpenModal] = useState(false);
+
   return (
     <body className="flex flex-col justify-center items-center">
       <section className="h-screen w-screen px-2 pb-6">
@@ -40,6 +45,7 @@ export default function LandingPage() {
                 src={sakura_mochi}
                 alt="sakura-mochi"
                 className="w-full image__img"
+                id="product_sakura_mochi"
               />
               <div className="image__overlay text-4xl w-full h-14">
                 <p>Sakura Mochi</p>
@@ -54,6 +60,7 @@ export default function LandingPage() {
               src={ichigo_daifuku}
               alt="strawberry-mochi"
               className="w-full image__img"
+              id="product_ichigo_daifuku"
             />
             <div className="image__overlay text-4xl w-full h-14">
               <p>Ichigo Daifuku</p>
@@ -67,6 +74,7 @@ export default function LandingPage() {
               src={warabi_mochi}
               alt="mochi-soybean-powder"
               className="w-full image__img"
+              id="product_warabi_mochi"
             />
             <div className="image__overlay text-4xl w-full h-14">
               <p>Warabi Mochi</p>
@@ -79,6 +87,7 @@ export default function LandingPage() {
                 src={hishi_mochi}
                 alt="hishi-diamond-mochi"
                 className="w-full image__img"
+                id="product_hishi_mochi"
               />
               <div className="image__overlay text-4xl w-full h-14">
                 <p>Hishi Mochi</p>
@@ -91,6 +100,7 @@ export default function LandingPage() {
           </div>
         </section>
       </section>
+      <ProductCard></ProductCard>
       <Footer></Footer>
     </body>
   );
