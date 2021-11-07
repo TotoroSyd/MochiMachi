@@ -1,6 +1,6 @@
 export default function Payment() {
   return (
-    <div>
+    <div className="py-6">
       <h1 className="font-semibold">PAYMENT DETAILS</h1>
       <div className="w-full grid gap-y-4">
         <input
@@ -13,7 +13,7 @@ export default function Payment() {
           placeholder="Card number"
           type="text"
         ></input>
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-3 gap-4">
           <input
             placeholder="Exp Date"
             type="text"
