@@ -3,9 +3,9 @@ import sakura_mochi from "../media/Sakura-mochi.jpeg";
 import ichigo_daifuku from "../media/Strawberry-Daifuku.jpeg";
 import warabi_mochi from "../media/warabi-mochi.jpeg";
 import hishi_mochi from "../media/Hishi-Mochi.jpeg";
-import mochi_machi_logo from "../media/MochiMachiLogo_white_rsize.png";
 import Footer from "./Footer";
 import ProductCard from "./ProductCard";
+import Nav from "./Nav";
 
 export default function LandingPage() {
   // User clicks on a product photo, a modal opens
@@ -14,13 +14,7 @@ export default function LandingPage() {
   return (
     <div className="flex flex-col justify-center items-center">
       <section className="h-screen w-screen px-2 pb-6">
-        <nav>
-          <img
-            src={mochi_machi_logo}
-            alt="mochimachilogo"
-            className="m-2 h-14"
-          />
-        </nav>
+        <Nav></Nav>
         <div className="banner h-full flex flex-col justify-center items-center">
           <div className="text-white font-bold text-7xl py-8">
             Delightful Sweet Japanese Mochi
