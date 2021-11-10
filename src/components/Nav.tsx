@@ -12,10 +12,9 @@ export default function Nav() {
             className="m-2 h-14"
           />
         </Link>
-        <h1 className="font-semibold">CHECKOUT</h1>
       </div>
       <Link to="/checkout">
-        <p className="text-center">Check out</p>
+        <h1 className="font-semibold text-center">CHECKOUT</h1>
       </Link>
     </nav>
   );
