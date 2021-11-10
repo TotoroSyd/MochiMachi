@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface Product_props {
   product_name: string;
@@ -70,12 +71,14 @@ export default function ProductCard(product: Product_props) {
         >
           ADD TO CART
         </button>
-        <button
-          type="submit"
-          className="button bg-transparent font-bold py-2 px-4 rounded-full"
-        >
-          CHECK OUT
-        </button>
+        <Link to="/checkout">
+          <button
+            type="submit"
+            className="button bg-transparent font-bold py-2 px-4 rounded-full"
+          >
+            CHECK OUT
+          </button>
+        </Link>
       </div>
     </div>
   );
