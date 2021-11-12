@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface DeliveryContact {
   firstName: string;
@@ -75,7 +76,7 @@ export default function Shipping() {
   }
 
   function submitDeliveryContact(ev: React.MouseEvent<HTMLButtonElement>) {
-    ev.preventDefault();
+    // ev.preventDefault();
     setDeliveryContact({
       firstName,
       lastName,
@@ -180,13 +181,15 @@ export default function Shipping() {
         type="text"
         onChange={getPostCode}
       ></input>
-      <button
-        type="submit"
-        className="button bg-transparent font-bold py-2 px-4 rounded-full"
-        onClick={submitDeliveryContact}
-      >
-        Next
-      </button>
+      <Link to="/payment">
+        <button
+          type="submit"
+          className="button bg-transparent font-bold py-2 px-4 rounded-full"
+          onClick={submitDeliveryContact}
+        >
+          Next
+        </button>
+      </Link>
     </div>
   );
 }
