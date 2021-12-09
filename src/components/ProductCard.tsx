@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { ModalContext } from "../contexts/ModalContext";
 
 interface Product_props {
   product_name: string;
@@ -7,8 +8,17 @@ interface Product_props {
   product_description: string;
 }
 
+interface Order_props {
+  order_productName: string;
+  order_quantity: number;
+  order_subTotal: number;
+}
+
 export default function ProductCard(product: Product_props) {
   let [qty, setQty] = useState<number>(1);
+  let [order_productName, setOrderProductName] = useState<string>("");
+  let [order_quantity, setOrderQuantity] = useState<number>(1);
+  let [order_subTotal, setOrderSubtotal] = useState<number>(1);
 
   let minusQty = (ev: React.MouseEvent<HTMLButtonElement>) => {
     ev.preventDefault();

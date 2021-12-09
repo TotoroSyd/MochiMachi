@@ -1,15 +1,28 @@
-// import { useState } from "react";
+import React, { useContext } from "react";
 import sakura_mochi from "../media/Sakura-mochi.jpeg";
 import ichigo_daifuku from "../media/Strawberry-Daifuku.jpeg";
 import warabi_mochi from "../media/warabi-mochi.jpeg";
 import hishi_mochi from "../media/Hishi-Mochi.jpeg";
 import Footer from "./Footer";
-import ProductCard from "./ProductCard";
+// import ProductCard from "./ProductCard";
 import Nav from "./Nav";
+import Modal from "./Modal";
+import {
+  ModalContext,
+  IModalContextValue,
+  IProductToDisplayInModal,
+} from "../contexts/ModalContext";
 
 export default function LandingPage() {
-  // User clicks on a product photo, a modal opens
-  // let [openModal, setOpenModal] = useState(false);
+  // Call global var from context to use
+  const { openModal, setOpenModal, setProductName, displayProduct } =
+    useContext<IModalContextValue>(ModalContext);
+
+  // let productToDisplay: IProductToDisplayInModal | string = "";
+  function handleImageClick(ev: React.MouseEvent<HTMLButtonElement>): void {
+    setOpenModal(true);
+    setProductName(ev.currentTarget.value);
+  }
 
   return (
     <div className="flex flex-col justify-center items-center">
@@ -35,57 +48,71 @@ export default function LandingPage() {
         <section className="grid grid-cols-2 gap-x-6">
           <div className="grid grid-cols-1">
             <div className="image">
-              <img
-                src={sakura_mochi}
-                alt="sakura-mochi"
-                className="w-full image__img"
-                id="product_sakura_mochi"
-              />
-              <div className="image__overlay text-4xl w-full h-14">
-                <p>Sakura Mochi</p>
-              </div>
+              <button
+                type="button"
+                value="Sakura_Mochi"
+                onClick={handleImageClick}
+              >
+                <img
+                  src={sakura_mochi}
+                  alt="sakura-mochi"
+                  className="w-full image__img"
+                  id="product_sakura_mochi"
+                />
+                <div className="image__overlay text-4xl w-full h-14">
+                  <p>Sakura Mochi</p>
+                </div>
+              </button>
             </div>
+
             <div className="text-center text-5xl w-full">
               A sign of the season
             </div>
           </div>
+
           <div className="image">
-            <img
-              src={ichigo_daifuku}
-              alt="strawberry-mochi"
-              className="w-full image__img"
-              id="product_ichigo_daifuku"
-            />
-            <div className="image__overlay text-4xl w-full h-14">
-              <p>Ichigo Daifuku</p>
-            </div>
+            <button>
+              <img
+                src={ichigo_daifuku}
+                alt="strawberry-mochi"
+                className="w-full image__img"
+                id="product_ichigo_daifuku"
+              />
+              <div className="image__overlay text-4xl w-full h-14">
+                <p>Ichigo Daifuku</p>
+              </div>
+            </button>
           </div>
         </section>
 
         <section className="grid grid-cols-2 gap-x-6">
           <div className="image">
-            <img
-              src={warabi_mochi}
-              alt="mochi-soybean-powder"
-              className="w-full image__img"
-              id="product_warabi_mochi"
-            />
-            <div className="image__overlay text-4xl w-full h-14">
-              <p>Warabi Mochi</p>
-            </div>
+            <button>
+              <img
+                src={warabi_mochi}
+                alt="mochi-soybean-powder"
+                className="w-full image__img"
+                id="product_warabi_mochi"
+              />
+              <div className="image__overlay text-4xl w-full h-14">
+                <p>Warabi Mochi</p>
+              </div>
+            </button>
           </div>
 
           <div className="grid grid-cols-1">
             <div className="image">
-              <img
-                src={hishi_mochi}
-                alt="hishi-diamond-mochi"
-                className="w-full image__img"
-                id="product_hishi_mochi"
-              />
-              <div className="image__overlay text-4xl w-full h-14">
-                <p>Hishi Mochi</p>
-              </div>
+              <button>
+                <img
+                  src={hishi_mochi}
+                  alt="hishi-diamond-mochi"
+                  className="w-full image__img"
+                  id="product_hishi_mochi"
+                />
+                <div className="image__overlay text-4xl w-full h-14">
+                  <p>Hishi Mochi</p>
+                </div>
+              </button>
             </div>
 
             <div className="text-center text-5xl leading-relaxed w-full">
@@ -94,11 +121,7 @@ export default function LandingPage() {
           </div>
         </section>
       </section>
-      <ProductCard
-        product_name={"Test Mochi"}
-        product_price={14}
-        product_description={"mochi machi is the best"}
-      ></ProductCard>
+      {openModal ? <Modal></Modal> : null}
       <Footer></Footer>
     </div>
   );
