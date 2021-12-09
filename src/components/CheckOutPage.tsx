@@ -11,7 +11,6 @@ export default function CheckOut() {
       <div className="grid grid-cols-3 gap-10 px-28 py-6">
         <form className="col-span-2">
           <Shipping></Shipping>
-          <Payment></Payment>
         </form>
         <div className="flex flex-col gap-y-10">
           <OrderSummary></OrderSummary>
