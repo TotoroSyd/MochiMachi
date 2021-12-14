@@ -1,10 +1,24 @@
 import React, { useContext } from "react";
 import { ModalContext, IModalContextValue } from "../contexts/ModalContext";
+import ProductCard from "./ProductCard";
 
-export default function Modal(productToDisplay: any) {
+export default function Modal() {
   // Call global var from context to use
-  const { setOpenModal } = useContext<IModalContextValue>(ModalContext);
-  console.log("product to display in modal" + productToDisplay);
+  // Control open/ close modal by clicking "X" or "Close"
+  const { setOpenModal, productToDisplay } =
+    useContext<IModalContextValue>(ModalContext);
+
+  // To be value for ProductCard's props
+  let nameToDisplay = "";
+  let priceToDisplay = 1;
+  let descriptionToDisplay = "";
+
+  // need to check null scenario
+  if (productToDisplay != null) {
+    nameToDisplay = productToDisplay.product_name;
+    priceToDisplay = productToDisplay.product_price;
+    descriptionToDisplay = productToDisplay.product_description;
+  } else console.log("productToDisplay is null");
 
   return (
     <>
@@ -14,22 +28,15 @@ export default function Modal(productToDisplay: any) {
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
             {/*header*/}
             <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-              <h3 className="text-3xl font-semibold">Modal Title</h3>
-              <button
-                className="p-1 ml-auto bg-transparent border-0 text-red-500 opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                onClick={() => setOpenModal(false)}
-              >
-                <span className="bg-transparent text-red-500 opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                  ×
-                </span>
-              </button>
+              <h3 className="text-3xl font-semibold">{nameToDisplay}</h3>
             </div>
             {/*body*/}
-            <div>{productToDisplay.product_name}</div>
             <div className="relative p-6 flex-auto">
-              <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
-                Product to display here
-              </p>
+              <ProductCard
+                name={nameToDisplay}
+                price={priceToDisplay}
+                description={descriptionToDisplay}
+              ></ProductCard>
             </div>
             {/*footer*/}
             <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
@@ -39,13 +46,6 @@ export default function Modal(productToDisplay: any) {
                 onClick={() => setOpenModal(false)}
               >
                 Close
-              </button>
-              <button
-                className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                type="button"
-                // onClick={() => setShowModal(false)}
-              >
-                Save Changes
               </button>
             </div>
           </div>

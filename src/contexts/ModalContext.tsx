@@ -13,64 +13,51 @@ export interface IProductToDisplayInModal {
 export interface IModalContextValue {
   openModal: boolean;
   setOpenModal: (value: boolean) => void;
-  product_name: string;
+  productName: string;
   setProductName: (value: string) => void;
-  displayProduct: (value: string) => IProductToDisplayInModal | string;
+  productToDisplay: IProductToDisplayInModal | null;
 }
 
 // Export context object
 export const ModalContext = createContext<IModalContextValue>({
   openModal: false,
   setOpenModal: (value: boolean) => null,
-  product_name: "",
+  productName: "",
   setProductName: (value: string) => null,
-  displayProduct: (value: string) => "",
+  productToDisplay: null,
 });
 
 // Context wrapper component
 // export default function ModalContextProvider({ children }) - js style
 export default function ModalContextProvider({ children }: ChildrenProps) {
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [product_name, setProductName] = useState<string>("");
+  const [productName, setProductName] = useState<string>("");
 
   const product_cat: { [key: string]: IProductToDisplayInModal } = {
     Sakura_Mochi: {
       product_name: "Sakura Mochi",
       product_price: 14,
-      product_description: "string",
+      product_description: "Sakura Mochi is for spring",
     },
     Ichigo_Daifuku: {
       product_name: "Ichigo Daifuku",
       product_price: 15,
-      product_description: "string",
+      product_description: "This is a strawberyy mochi",
     },
     Warabi_Mochi: {
       product_name: "Warabi Mochi",
       product_price: 16,
-      product_description: "string",
+      product_description: "Soybean mochi",
     },
     Hishi_Mochi: {
       product_name: "Hishi Mochi",
       product_price: 17,
-      product_description: "string",
+      product_description: "diamond shaped three layers mochi",
     },
   };
-  console.log("product_name before displayProduct function= " + product_name);
-  function displayProduct(product_name: string) {
-    let product_display_in_modal = {
-      product_name: "",
-      product_price: 0,
-      product_description: "",
-    };
-    console.log("product_name in displayProduct function= " + product_name);
-    console.log("product_cat[product_name] = " + product_cat[product_name]);
-    if (!product_cat[product_name]) {
-      return "hello from display product function";
-    } else {
-      product_display_in_modal = product_cat[product_name];
-      return product_display_in_modal;
-    }
-  }
+
+  // To be used in Modal, passed to ProductCard
+  let productToDisplay: IProductToDisplayInModal = product_cat[productName];
 
   // Return
   return (
@@ -78,9 +65,9 @@ export default function ModalContextProvider({ children }: ChildrenProps) {
       value={{
         openModal,
         setOpenModal,
-        product_name,
+        productName,
         setProductName,
-        displayProduct,
+        productToDisplay,
       }}
     >
       {children}
