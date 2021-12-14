@@ -7,15 +7,11 @@ import Footer from "./Footer";
 // import ProductCard from "./ProductCard";
 import Nav from "./Nav";
 import Modal from "./Modal";
-import {
-  ModalContext,
-  IModalContextValue,
-  IProductToDisplayInModal,
-} from "../contexts/ModalContext";
+import { ModalContext, IModalContextValue } from "../contexts/ModalContext";
 
 export default function LandingPage() {
   // Call global var from context to use
-  const { openModal, setOpenModal, setProductName, displayProduct } =
+  const { openModal, setOpenModal, setProductName } =
     useContext<IModalContextValue>(ModalContext);
 
   // let productToDisplay: IProductToDisplayInModal | string = "";
@@ -71,7 +67,11 @@ export default function LandingPage() {
           </div>
 
           <div className="image">
-            <button>
+            <button
+              type="button"
+              value="Ichigo_Daifuku"
+              onClick={handleImageClick}
+            >
               <img
                 src={ichigo_daifuku}
                 alt="strawberry-mochi"
@@ -87,7 +87,11 @@ export default function LandingPage() {
 
         <section className="grid grid-cols-2 gap-x-6">
           <div className="image">
-            <button>
+            <button
+              type="button"
+              value="Warabi_Mochi"
+              onClick={handleImageClick}
+            >
               <img
                 src={warabi_mochi}
                 alt="mochi-soybean-powder"
@@ -102,7 +106,11 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-1">
             <div className="image">
-              <button>
+              <button
+                type="button"
+                value="Hishi_Mochi"
+                onClick={handleImageClick}
+              >
                 <img
                   src={hishi_mochi}
                   alt="hishi-diamond-mochi"

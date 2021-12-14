@@ -1,24 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { ModalContext } from "../contexts/ModalContext";
+import { createModuleResolutionCache } from "typescript";
+import { ModalContext, IModalContextValue } from "../contexts/ModalContext";
+import { OrderContext, IOrderProps } from "../contexts/OrderContext";
 
 interface Product_props {
-  product_name: string;
-  product_price: number;
-  product_description: string;
-}
-
-interface Order_props {
-  order_productName: string;
-  order_quantity: number;
-  order_subTotal: number;
+  name: string;
+  price: number;
+  description: string;
 }
 
 export default function ProductCard(product: Product_props) {
   let [qty, setQty] = useState<number>(1);
-  let [order_productName, setOrderProductName] = useState<string>("");
-  let [order_quantity, setOrderQuantity] = useState<number>(1);
-  let [order_subTotal, setOrderSubtotal] = useState<number>(1);
+  const { productName } = useContext<IModalContextValue>(ModalContext);
+  const {
+    order_quantity,
+    setOrderQuantity,
+    order_productName,
+    setOrderProductName,
+  } = useContext<IOrderProps>(OrderContext);
 
   let minusQty = (ev: React.MouseEvent<HTMLButtonElement>) => {
     ev.preventDefault();
@@ -46,12 +46,19 @@ export default function ProductCard(product: Product_props) {
     setQty(qty + 1);
   }
 
+  function add_to_cart(ev: React.MouseEvent<HTMLButtonElement>): void {
+    setOrderQuantity(qty);
+    setOrderProductName(ev.currentTarget.value);
+    console.log(order_quantity);
+    console.log(order_productName);
+  }
+
   return (
-    // delete py when done
-    <div className="py-6">
-      <h2 className="font-semibold text-2xl pb-2">{product.product_name}</h2>
-      <h4>Price: ${product.product_price}</h4>
-      <span>Description: {product.product_description}</span>
+    <div>
+      {/* Unused for now because we have modal title */}
+      {/* <h2 className="font-semibold text-2xl pb-2">{product.name}</h2> */}
+      <h4>Price: ${product.price}</h4>
+      <span>Description: {product.description}</span>
       <div className="grid grid-cols-2 gap-2 w-28 pt-2 pb-4">
         <span>QTY</span>
         {/* Quantity box */}
@@ -78,6 +85,8 @@ export default function ProductCard(product: Product_props) {
         <button
           type="submit"
           className="button bg-transparent font-bold py-2 px-4 rounded-full"
+          value={productName}
+          onClick={add_to_cart}
         >
           ADD TO CART
         </button>
