@@ -17,6 +17,7 @@ export default function ProductCard(product: Product_props) {
     setOrderQuantity,
     order_productName,
     setOrderProductName,
+    // updateOrderProductKey,
   } = useContext<IOrderProps>(OrderContext);
 
   let minusQty = (ev: React.MouseEvent<HTMLButtonElement>) => {
@@ -48,8 +49,7 @@ export default function ProductCard(product: Product_props) {
   function add_to_cart(ev: React.MouseEvent<HTMLButtonElement>): void {
     setOrderQuantity(qty);
     setOrderProductName(ev.currentTarget.value);
-    console.log(order_quantity);
-    console.log(order_productName);
+    // updateOrderProductKey(productName, qty);
   }
 
   return (
