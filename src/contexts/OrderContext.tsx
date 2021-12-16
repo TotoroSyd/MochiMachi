@@ -9,6 +9,8 @@ export interface IOrderProps {
   setOrderProductName: (value: string) => void;
   order_quantity: number;
   setOrderQuantity: (value: number) => void;
+  //   updateOrderProductKey: (value0: string, value1: number) => void;
+  //   orderProductKey: string[];
   //   order_subTotal: number;
 }
 
@@ -18,14 +20,26 @@ export const OrderContext = createContext<IOrderProps>({
   setOrderProductName: (value: string) => null,
   order_quantity: 1,
   setOrderQuantity: (value: number) => null,
+  //   updateOrderProductKey: (value0: string, value1: number) => null,
+  //   orderProductKey: [],
 });
 
 // Context wrapper component
 // export default function OrderContextProvider({ children }) - js style
 export default function OrderContextProvider({ children }: ChildrenProps) {
   const [order_productName, setOrderProductName] = useState<string>("");
+  const [orderProductKeyy, setOrderProductKeyy] = useState([]);
   const [order_quantity, setOrderQuantity] = useState<number>(1);
   const [order_subTotal, setOrderSubtotal] = useState<number>(1);
+
+  // Calculate subtotal
+  let orderProductKey: string[] = [];
+  let orderQuantity: { [key: string]: number } = {};
+
+  // Functions
+  function updateOrderProductKey(product: string, quantity: number): void {}
+
+  function updateOrderQuantity(product: string, quantity: number): void {}
   // Return
   return (
     <OrderContext.Provider
