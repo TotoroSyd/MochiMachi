@@ -1,5 +1,5 @@
 import Nav from "./Nav";
-import Payment from "./Payment";
+// import Payment from "./Payment";
 import Shipping from "./Shipping";
 import OrderSummary from "./OrderSummary";
 import { Link } from "react-router-dom";
