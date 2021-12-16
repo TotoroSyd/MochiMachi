@@ -11,14 +11,9 @@ interface Product_props {
 
 export default function ProductCard(product: Product_props) {
   let [qty, setQty] = useState<number>(1);
+  let productTocart: { [key: string]: number } = {};
   const { productName } = useContext<IModalContextValue>(ModalContext);
-  const {
-    order_quantity,
-    setOrderQuantity,
-    // order_productName,
-    // setOrderProductName,
-    updateOrderProductNameArr,
-  } = useContext<IOrderProps>(OrderContext);
+  const { handleAddToCartButton } = useContext<IOrderProps>(OrderContext);
 
   let minusQty = (ev: React.MouseEvent<HTMLButtonElement>) => {
     ev.preventDefault();
@@ -48,9 +43,9 @@ export default function ProductCard(product: Product_props) {
 
   function add_to_cart(ev: React.MouseEvent<HTMLButtonElement>): void {
     ev.preventDefault();
-    setOrderQuantity(qty);
-    // setOrderProductName(ev.currentTarget.value);
-    updateOrderProductNameArr(ev.currentTarget.value);
+    let pro = ev.currentTarget.value;
+    productTocart[pro] = qty;
+    handleAddToCartButton(pro, productTocart);
   }
 
   return (

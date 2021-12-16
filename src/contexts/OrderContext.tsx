@@ -5,59 +5,54 @@ interface ChildrenProps {
 }
 
 export interface IOrderProps {
-  //   order_productName: string;
-  //   setOrderProductName: (value: string) => void;
-  order_quantity: number;
-  setOrderQuantity: (value: number) => void;
-  updateOrderProductNameArr: (value0: string) => void;
-  orderProductNameArr: string[];
-  setOrderProductNameArr: (value: string[]) => void;
-  //   order_subTotal: number;
+  handleAddToCartButton: (
+    value0: string,
+    value1: { [key: string]: number }
+  ) => void;
+  // orderProductNameArr: string[];
+  // setOrderProductNameArr: (value: string[]) => void;
 }
 
 // Export context object
 export const OrderContext = createContext<IOrderProps>({
-  //   order_productName: "",
-  //   setOrderProductName: (value: string) => null,
-  order_quantity: 1,
-  setOrderQuantity: (value: number) => null,
-  updateOrderProductNameArr: (value0: string) => null,
-  orderProductNameArr: [],
-  setOrderProductNameArr: (value: string[]) => null,
+  handleAddToCartButton: (value0: string, value1: { [key: string]: number }) =>
+    null,
+  // orderProductNameArr: [],
+  // setOrderProductNameArr: (value: string[]) => null,
 });
 
 // Context wrapper component
 // export default function OrderContextProvider({ children }) - js style
 export default function OrderContextProvider({ children }: ChildrenProps) {
-  //   const [order_productName, setOrderProductName] = useState<string>("");
-  const [order_quantity, setOrderQuantity] = useState<number>(1);
   const [orderProductNameArr, setOrderProductNameArr] = useState<string[]>([]);
-
-  // Calculate subtotal
-  //   let orderProductNameArray: string[] = [];
-  let orderQuantity: { [key: string]: number } = {};
+  const [orderQty, setOrderQty] = useState<{ [key: string]: number }[]>([]);
 
   // Functions
-  function updateOrderProductNameArr(product: string): void {
+  function handleAddToCartButton(
+    product: string,
+    productTocart: { [key: string]: number }
+  ): void {
+    let index = 0;
+    // product wasn't ordered, add to cart
     if (!orderProductNameArr.includes(product)) {
       setOrderProductNameArr([...orderProductNameArr, product]);
-    } else {
+      setOrderQty([...orderQty, productTocart]);
+    }
+    // product was ordered then update the quantity
+    else {
+      index = orderProductNameArr.indexOf(product);
+      orderQty.splice(index, 1, productTocart);
       console.log("product was ordered");
     }
   }
 
-  function updateOrderQuantity(product: string, quantity: number): void {}
+  console.log(orderProductNameArr);
+  console.log(orderQty);
   // Return
   return (
     <OrderContext.Provider
       value={{
-        order_quantity,
-        setOrderQuantity,
-        // order_productName,
-        // setOrderProductName,
-        updateOrderProductNameArr,
-        orderProductNameArr,
-        setOrderProductNameArr,
+        handleAddToCartButton,
       }}
     >
       {children}
