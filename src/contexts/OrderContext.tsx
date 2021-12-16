@@ -5,39 +5,46 @@ interface ChildrenProps {
 }
 
 export interface IOrderProps {
-  order_productName: string;
-  setOrderProductName: (value: string) => void;
+  //   order_productName: string;
+  //   setOrderProductName: (value: string) => void;
   order_quantity: number;
   setOrderQuantity: (value: number) => void;
-  //   updateOrderProductKey: (value0: string, value1: number) => void;
-  //   orderProductKey: string[];
+  updateOrderProductNameArr: (value0: string) => void;
+  orderProductNameArr: string[];
+  setOrderProductNameArr: (value: string[]) => void;
   //   order_subTotal: number;
 }
 
 // Export context object
 export const OrderContext = createContext<IOrderProps>({
-  order_productName: "",
-  setOrderProductName: (value: string) => null,
+  //   order_productName: "",
+  //   setOrderProductName: (value: string) => null,
   order_quantity: 1,
   setOrderQuantity: (value: number) => null,
-  //   updateOrderProductKey: (value0: string, value1: number) => null,
-  //   orderProductKey: [],
+  updateOrderProductNameArr: (value0: string) => null,
+  orderProductNameArr: [],
+  setOrderProductNameArr: (value: string[]) => null,
 });
 
 // Context wrapper component
 // export default function OrderContextProvider({ children }) - js style
 export default function OrderContextProvider({ children }: ChildrenProps) {
-  const [order_productName, setOrderProductName] = useState<string>("");
-  const [orderProductKeyy, setOrderProductKeyy] = useState([]);
+  //   const [order_productName, setOrderProductName] = useState<string>("");
   const [order_quantity, setOrderQuantity] = useState<number>(1);
-  const [order_subTotal, setOrderSubtotal] = useState<number>(1);
+  const [orderProductNameArr, setOrderProductNameArr] = useState<string[]>([]);
 
   // Calculate subtotal
-  let orderProductKey: string[] = [];
+  //   let orderProductNameArray: string[] = [];
   let orderQuantity: { [key: string]: number } = {};
 
   // Functions
-  function updateOrderProductKey(product: string, quantity: number): void {}
+  function updateOrderProductNameArr(product: string): void {
+    if (!orderProductNameArr.includes(product)) {
+      setOrderProductNameArr([...orderProductNameArr, product]);
+    } else {
+      console.log("product was ordered");
+    }
+  }
 
   function updateOrderQuantity(product: string, quantity: number): void {}
   // Return
@@ -46,8 +53,11 @@ export default function OrderContextProvider({ children }: ChildrenProps) {
       value={{
         order_quantity,
         setOrderQuantity,
-        order_productName,
-        setOrderProductName,
+        // order_productName,
+        // setOrderProductName,
+        updateOrderProductNameArr,
+        orderProductNameArr,
+        setOrderProductNameArr,
       }}
     >
       {children}
