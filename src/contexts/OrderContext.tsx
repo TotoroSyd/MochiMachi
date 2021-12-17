@@ -1,4 +1,3 @@
-import { setUncaughtExceptionCaptureCallback } from "process";
 import React, { createContext, useContext, useState } from "react";
 import { ModalContext, IModalContextValue } from "./ModalContext";
 // Reference why we use React.ReactNode for children https://www.carlrippon.com/react-children-with-typescript/
@@ -33,6 +32,7 @@ export default function OrderContextProvider({ children }: ChildrenProps) {
   const [orderQty, setOrderQty] = useState<{ [key: string]: number }[]>([]);
   const [subTotal, setSubTotal] = useState<{ [key: string]: number }[]>([]);
   const { getPrice } = useContext<IModalContextValue>(ModalContext);
+
   // Functions
   function handleAddToCartButton(
     product: string,
@@ -54,30 +54,32 @@ export default function OrderContextProvider({ children }: ChildrenProps) {
 
   function calSubTotal() {
     // Get price from ModalContext
-    let priceArr: number[] = [];
+    // let priceArr: number[] = [];
+    let priceArr: { [key: string]: number } = {};
+    let price = 0;
     let sub_total = 0;
     orderProductNameArr.forEach((element) => {
-      let price = getPrice(element);
+      price = getPrice(element);
       // cover scenario price is null at first render
       if (price != null) {
-        priceArr.push(price);
+        priceArr[element] = price;
       }
     });
+    console.log("priceArr: " + JSON.stringify(priceArr));
     // Calculate subtotal
     orderProductNameArr.forEach((el) => {
       orderQty.forEach((item) => {
         for (let i = 0; i < priceArr.length; i++) {
-          sub_total = item[el] * priceArr[i];
+          sub_total = item[el] * priceArr[el];
           setSubTotal([...subTotal, { el: sub_total }]);
         }
       });
     });
   }
 
-  console.log(orderProductNameArr);
-  console.log(orderQty);
+  // console.log(orderProductNameArr);
+  // console.log(orderQty);
   console.log(subTotal);
-
   // Return
   return (
     <OrderContext.Provider

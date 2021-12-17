@@ -16,7 +16,7 @@ export interface IModalContextValue {
   productName: string;
   setProductName: (value: string) => void;
   productToDisplay: IProductToDisplayInModal | null;
-  getPrice: (value: string) => void;
+  getPrice: (value: string) => number;
 }
 
 // Export context object
@@ -26,7 +26,7 @@ export const ModalContext = createContext<IModalContextValue>({
   productName: "",
   setProductName: (value: string) => null,
   productToDisplay: null,
-  getPrice: (value: string) => null,
+  getPrice: (value: string) => 0,
 });
 
 // Context wrapper component
