@@ -16,6 +16,7 @@ export interface IModalContextValue {
   productName: string;
   setProductName: (value: string) => void;
   productToDisplay: IProductToDisplayInModal | null;
+  getPrice: (value: string) => void;
 }
 
 // Export context object
@@ -25,6 +26,7 @@ export const ModalContext = createContext<IModalContextValue>({
   productName: "",
   setProductName: (value: string) => null,
   productToDisplay: null,
+  getPrice: (value: string) => null,
 });
 
 // Context wrapper component
@@ -59,6 +61,14 @@ export default function ModalContextProvider({ children }: ChildrenProps) {
   // To be used in Modal, passed to ProductCard
   let productToDisplay: IProductToDisplayInModal = product_cat[productName];
 
+  // Function
+  function getPrice(product: string): number {
+    let price = product_cat[product].product_price;
+    if (price != null) {
+      return price;
+    } else return 0;
+  }
+
   // Return
   return (
     <ModalContext.Provider
@@ -68,6 +78,7 @@ export default function ModalContextProvider({ children }: ChildrenProps) {
         productName,
         setProductName,
         productToDisplay,
+        getPrice,
       }}
     >
       {children}

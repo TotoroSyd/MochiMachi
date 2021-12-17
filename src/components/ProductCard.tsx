@@ -13,7 +13,8 @@ export default function ProductCard(product: Product_props) {
   let [qty, setQty] = useState<number>(1);
   let productTocart: { [key: string]: number } = {};
   const { productName } = useContext<IModalContextValue>(ModalContext);
-  const { handleAddToCartButton } = useContext<IOrderProps>(OrderContext);
+  const { handleAddToCartButton, calSubTotal } =
+    useContext<IOrderProps>(OrderContext);
 
   let minusQty = (ev: React.MouseEvent<HTMLButtonElement>) => {
     ev.preventDefault();
@@ -89,6 +90,7 @@ export default function ProductCard(product: Product_props) {
           <button
             type="submit"
             className="button bg-transparent font-bold py-2 px-4 rounded-full"
+            onClick={calSubTotal}
           >
             CHECK OUT
           </button>
