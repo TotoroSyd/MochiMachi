@@ -4,7 +4,6 @@ import ichigo_daifuku from "../media/Strawberry-Daifuku.jpeg";
 import warabi_mochi from "../media/warabi-mochi.jpeg";
 import hishi_mochi from "../media/Hishi-Mochi.jpeg";
 import Footer from "./Footer";
-// import ProductCard from "./ProductCard";
 import Nav from "./Nav";
 import Modal from "./Modal";
 import { ModalContext, IModalContextValue } from "../contexts/ModalContext";

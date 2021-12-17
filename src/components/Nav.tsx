@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import mochi_machi_logo from "../media/MochiMachiLogo_white_rsize.png";
 import { Link } from "react-router-dom";
+import { OrderContext, IOrderProps } from "../contexts/OrderContext";
 
 export default function Nav() {
+  const { calSubTotal } = useContext<IOrderProps>(OrderContext);
   return (
     <nav className="grid grid-cols-2 gap-10">
       <div className="flex flex-row">
@@ -14,7 +17,13 @@ export default function Nav() {
         </Link>
       </div>
       <Link to="/checkout">
-        <h1 className="font-semibold text-center">CHECKOUT</h1>
+        <button
+          className="font-semibold text-center"
+          onClick={calSubTotal}
+          type="button"
+        >
+          CHECKOUT
+        </button>
       </Link>
     </nav>
   );
