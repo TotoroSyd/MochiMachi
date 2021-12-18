@@ -55,31 +55,35 @@ export default function OrderContextProvider({ children }: ChildrenProps) {
   function calSubTotal() {
     // Get price from ModalContext
     // let priceArr: number[] = [];
-    let priceArr: { [key: string]: number } = {};
-    let price = 0;
+    let price: { [key: string]: number } = {};
+    let p = 0;
     let sub_total = 0;
     orderProductNameArr.forEach((element) => {
-      price = getPrice(element);
-      // cover scenario price is null at first render
-      if (price != null) {
-        priceArr[element] = price;
+      // get price for each product that got ordered
+      p = getPrice(element);
+      // cover scenario price is null or NaN
+      if (p) {
+        price[element] = p;
       }
     });
-    console.log("priceArr: " + JSON.stringify(priceArr));
-    // Calculate subtotal
+
+    // Calculate subtotal for each product that was ordered
+    let dummySubTotal: { [key: string]: number } = {};
     orderProductNameArr.forEach((el) => {
+      // to get order quantityh
       orderQty.forEach((item) => {
-        for (let i = 0; i < priceArr.length; i++) {
-          sub_total = item[el] * priceArr[el];
-          setSubTotal([...subTotal, { el: sub_total }]);
+        // calculate sub_total for each product that got ordered
+        sub_total = item[el] * price[el];
+        // cover scenario sub_total is null or NaN
+        if (sub_total) {
+          dummySubTotal[el] = sub_total;
+          // update state
+          setSubTotal([...subTotal, dummySubTotal]);
         }
       });
     });
   }
 
-  // console.log(orderProductNameArr);
-  // console.log(orderQty);
-  console.log(subTotal);
   // Return
   return (
     <OrderContext.Provider
