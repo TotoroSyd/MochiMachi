@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ModalContext, IModalContextValue } from "../contexts/ModalContext";
 import { OrderContext, IOrderProps } from "../contexts/OrderContext";
+import CheckOut from "./CheckOutPage";
 
 interface Product_props {
   name: string;
@@ -13,8 +14,7 @@ export default function ProductCard(product: Product_props) {
   let [qty, setQty] = useState<number>(1);
   let productTocart: { [key: string]: number } = {};
   const { productName } = useContext<IModalContextValue>(ModalContext);
-  const { handleAddToCartButton, calSubTotal } =
-    useContext<IOrderProps>(OrderContext);
+  const { handleAddToCartButton } = useContext<IOrderProps>(OrderContext);
 
   let minusQty = (ev: React.MouseEvent<HTMLButtonElement>) => {
     ev.preventDefault();
@@ -90,7 +90,7 @@ export default function ProductCard(product: Product_props) {
           <button
             type="submit"
             className="button bg-transparent font-bold py-2 px-4 rounded-full"
-            onClick={calSubTotal}
+            onClick={() => <CheckOut />}
           >
             CHECK OUT
           </button>
