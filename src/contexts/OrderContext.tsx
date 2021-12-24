@@ -4,33 +4,35 @@ import { ModalContext, IModalContextValue } from "./ModalContext";
 interface ChildrenProps {
   children: React.ReactNode;
 }
+export interface IOrder {
+  product: string;
+  quantity: number;
+  subtt: number;
+}
 
 export interface IOrderProps {
   handleAddToCartButton: (
     value0: string,
     value1: { [key: string]: number }
   ) => void;
-  calSubTotal: () => void;
-  // //Do not need to set interface for state orderProductNameArr if we dont plan to export it out of this context via createContext
-  // orderProductNameArr: string[];
-  // setOrderProductNameArr: (value: string[]) => void;
+  orderProductNameArr: string[];
+  // orderArray: IOrder[];
+  orderArray: Array<IOrder>;
 }
 
 // Export context object
 export const OrderContext = createContext<IOrderProps>({
   handleAddToCartButton: (value0: string, value1: { [key: string]: number }) =>
     null,
-  calSubTotal: () => null,
-  // orderProductNameArr: [],
-  // setOrderProductNameArr: (value: string[]) => null,
+  orderProductNameArr: [],
+  orderArray: [],
 });
 
 // Context wrapper component
 // export default function OrderContextProvider({ children }) - js style
 export default function OrderContextProvider({ children }: ChildrenProps) {
+  const [orderArray, setArray] = useState<IOrder[]>([]);
   const [orderProductNameArr, setOrderProductNameArr] = useState<string[]>([]);
-  const [orderQty, setOrderQty] = useState<{ [key: string]: number }[]>([]);
-  const [subTotal, setSubTotal] = useState<{ [key: string]: number }[]>([]);
   const { getPrice } = useContext<IModalContextValue>(ModalContext);
 
   // Functions
@@ -38,50 +40,41 @@ export default function OrderContextProvider({ children }: ChildrenProps) {
     product: string,
     productTocart: { [key: string]: number }
   ): void {
-    let index = 0;
+    let order: IOrder = { product: "product", quantity: 2, subtt: 28 };
+
     // product wasn't ordered, add to cart
     if (!orderProductNameArr.includes(product)) {
       setOrderProductNameArr([...orderProductNameArr, product]);
-      setOrderQty([...orderQty, productTocart]);
+      order.product = product;
+      order.quantity = productTocart[product];
+      order.subtt = calSubTotal(order);
+      setArray([...orderArray, order]);
     }
-    // product was ordered then update the quantity
+    // product was ordered then update the quantity and sub total
     else {
-      index = orderProductNameArr.indexOf(product);
-      orderQty.splice(index, 1, productTocart);
       console.log("product was ordered");
+      order.product = product;
+      order.quantity = productTocart[product];
+      order.subtt = calSubTotal(order);
+      let dummyArr = orderArray;
+      for (let i = 0; i < orderArray.length; i++) {
+        if ((orderArray[i].product = product)) {
+          dummyArr.splice(i, 1, order);
+          setArray(dummyArr);
+          break;
+        }
+      }
     }
   }
 
-  function calSubTotal() {
+  function calSubTotal(order: IOrder) {
     // Get price from ModalContext
-    // let priceArr: number[] = [];
-    let price: { [key: string]: number } = {};
     let p = 0;
     let sub_total = 0;
-    orderProductNameArr.forEach((element) => {
-      // get price for each product that got ordered
-      p = getPrice(element);
-      // cover scenario price is null or NaN
-      if (p) {
-        price[element] = p;
-      }
-    });
-
+    p = getPrice(order.product);
     // Calculate subtotal for each product that was ordered
-    let dummySubTotal: { [key: string]: number } = {};
-    orderProductNameArr.forEach((el) => {
-      // to get order quantityh
-      orderQty.forEach((item) => {
-        // calculate sub_total for each product that got ordered
-        sub_total = item[el] * price[el];
-        // cover scenario sub_total is null or NaN
-        if (sub_total) {
-          dummySubTotal[el] = sub_total;
-          // update state
-          setSubTotal([...subTotal, dummySubTotal]);
-        }
-      });
-    });
+    sub_total = p * order.quantity;
+    return sub_total;
   }
 
   // Return
@@ -89,7 +82,8 @@ export default function OrderContextProvider({ children }: ChildrenProps) {
     <OrderContext.Provider
       value={{
         handleAddToCartButton,
-        calSubTotal,
+        orderProductNameArr,
+        orderArray,
       }}
     >
       {children}

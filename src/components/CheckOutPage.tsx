@@ -1,10 +1,17 @@
 import Nav from "./Nav";
-// import Payment from "./Payment";
+import { useContext } from "react";
+import { OrderContext, IOrderProps } from "../contexts/OrderContext";
 import Shipping from "./Shipping";
 import OrderSummary from "./OrderSummary";
 import { Link } from "react-router-dom";
 
 export default function CheckOut() {
+  const { orderArray } = useContext<IOrderProps>(OrderContext);
+
+  if (orderArray === null) {
+    return null;
+  }
+
   return (
     <div>
       <Nav></Nav>
@@ -13,7 +20,7 @@ export default function CheckOut() {
           <Shipping></Shipping>
         </form>
         <div className="flex flex-col gap-y-10">
-          <OrderSummary></OrderSummary>
+          {<OrderSummary orderArr={orderArray}></OrderSummary>}
           <Link to="/review">
             <button
               type="submit"
