@@ -40,7 +40,11 @@ export default function OrderContextProvider({ children }: ChildrenProps) {
     product: string,
     productTocart: { [key: string]: number }
   ): void {
-    let order: IOrder = { product: "product", quantity: 2, subtt: 28 };
+    let order: IOrder = {
+      product: "product",
+      quantity: 2,
+      subtt: 28,
+    };
 
     // product wasn't ordered, add to cart
     if (!orderProductNameArr.includes(product)) {
