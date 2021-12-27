@@ -6,7 +6,7 @@ import OrderSummary from "./OrderSummary";
 import { Link } from "react-router-dom";
 
 export default function CheckOut() {
-  const { orderArray } = useContext<IOrderProps>(OrderContext);
+  const { orderArray, total } = useContext<IOrderProps>(OrderContext);
 
   if (orderArray === null) {
     return null;
@@ -20,7 +20,7 @@ export default function CheckOut() {
           <Shipping></Shipping>
         </form>
         <div className="flex flex-col gap-y-10">
-          {<OrderSummary orderArr={orderArray}></OrderSummary>}
+          {<OrderSummary orderArr={orderArray} total={total}></OrderSummary>}
           <Link to="/review">
             <button
               type="submit"

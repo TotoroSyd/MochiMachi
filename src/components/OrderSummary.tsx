@@ -1,10 +1,11 @@
 import { IOrder } from "../contexts/OrderContext";
 interface Props {
   orderArr: Array<IOrder>;
+  total: number;
 }
 // can't pass directly an array to component function. an array must be warapped inside an object to be component's prop
-export default function OrderSummary({ orderArr }: Props) {
-  console.log("orderArr in OrderSummary: ", orderArr);
+export default function OrderSummary({ orderArr, total }: Props) {
+  // console.log("orderArr in OrderSummary: ", orderArr);
 
   return (
     <div>
@@ -32,7 +33,7 @@ export default function OrderSummary({ orderArr }: Props) {
       })}
       <div className="text-2xl font-semibold py-4 grid grid-cols-2">
         <span>Total</span>
-        <span>1000</span>
+        <span>{total}</span>
       </div>
     </div>
   );
