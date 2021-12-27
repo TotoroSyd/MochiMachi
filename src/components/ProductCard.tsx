@@ -11,7 +11,7 @@ interface Product_props {
 }
 
 export default function ProductCard(product: Product_props) {
-  let [qty, setQty] = useState<number>(1);
+  let [qty, setQty] = useState<number>(0);
   let productTocart: { [key: string]: number } = {};
   const { productName } = useContext<IModalContextValue>(ModalContext);
   const { handleAddToCartButton } = useContext<IOrderProps>(OrderContext);
@@ -32,7 +32,7 @@ export default function ProductCard(product: Product_props) {
   function minus_Qty(): void {
     setQty(qty - 1);
     if (qty <= 1) {
-      setQty(1);
+      setQty(0);
     } else {
       setQty(qty - 1);
     }

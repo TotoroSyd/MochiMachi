@@ -16,8 +16,8 @@ export interface IOrderProps {
     value1: { [key: string]: number }
   ) => void;
   orderProductNameArr: string[];
-  // orderArray: IOrder[];
   orderArray: Array<IOrder>;
+  total: number;
 }
 
 // Export context object
@@ -26,15 +26,17 @@ export const OrderContext = createContext<IOrderProps>({
     null,
   orderProductNameArr: [],
   orderArray: [],
+  total: 0,
 });
 
 // Context wrapper component
 // export default function OrderContextProvider({ children }) - js style
 export default function OrderContextProvider({ children }: ChildrenProps) {
   const [orderArray, setArray] = useState<IOrder[]>([]);
+  const [total, setTotal] = useState<number>(0);
   const [orderProductNameArr, setOrderProductNameArr] = useState<string[]>([]);
   const { getPrice } = useContext<IModalContextValue>(ModalContext);
-
+  console.log("orderArray in OrderContext: ", orderArray);
   // Functions
   function handleAddToCartButton(
     product: string,
@@ -45,7 +47,6 @@ export default function OrderContextProvider({ children }: ChildrenProps) {
       quantity: 2,
       subtt: 28,
     };
-
     // product wasn't ordered, add to cart
     if (!orderProductNameArr.includes(product)) {
       setOrderProductNameArr([...orderProductNameArr, product]);
@@ -54,12 +55,13 @@ export default function OrderContextProvider({ children }: ChildrenProps) {
       order.subtt = calSubTotal(order);
       setArray([...orderArray, order]);
     }
-    // product was ordered then update the quantity and sub total
+    // product was ordered then update quantity and sub total
     else {
       console.log("product was ordered");
       order.product = product;
       order.quantity = productTocart[product];
       order.subtt = calSubTotal(order);
+      // update quantity and sub total
       let dummyArr = orderArray;
       for (let i = 0; i < orderArray.length; i++) {
         if ((orderArray[i].product = product)) {
@@ -69,9 +71,11 @@ export default function OrderContextProvider({ children }: ChildrenProps) {
         }
       }
     }
+
+    setTotal(calTotal(orderArray));
   }
 
-  function calSubTotal(order: IOrder) {
+  function calSubTotal(order: IOrder): number {
     // Get price from ModalContext
     let p = 0;
     let sub_total = 0;
@@ -81,6 +85,14 @@ export default function OrderContextProvider({ children }: ChildrenProps) {
     return sub_total;
   }
 
+  function calTotal(orderlist: IOrder[]): number {
+    console.log("orderlist: ", orderlist);
+    let total = 0;
+    orderlist.forEach((order) => {
+      total = total + order.subtt;
+    });
+    return total;
+  }
   // Return
   return (
     <OrderContext.Provider
@@ -88,6 +100,7 @@ export default function OrderContextProvider({ children }: ChildrenProps) {
         handleAddToCartButton,
         orderProductNameArr,
         orderArray,
+        total,
       }}
     >
       {children}
