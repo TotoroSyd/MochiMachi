@@ -1,8 +1,6 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
 import { ModalContext, IModalContextValue } from "../contexts/ModalContext";
 import { OrderContext, IOrderProps } from "../contexts/OrderContext";
-import CheckOut from "./CheckOutPage";
 
 interface Product_props {
   name: string;
@@ -86,7 +84,7 @@ export default function ProductCard(product: Product_props) {
         >
           ADD TO CART
         </button>
-        <Link to="/checkout">
+        {/* <Link to="/checkout">
           <button
             type="submit"
             className="button bg-transparent font-bold py-2 px-4 rounded-full"
@@ -94,7 +92,7 @@ export default function ProductCard(product: Product_props) {
           >
             CHECK OUT
           </button>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

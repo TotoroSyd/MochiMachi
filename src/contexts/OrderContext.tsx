@@ -18,6 +18,8 @@ export interface IOrderProps {
   orderProductNameArr: string[];
   orderArray: Array<IOrder>;
   total: number;
+  setArray: ([]) => void;
+  setTotal: (value: number) => void;
 }
 
 // Export context object
@@ -26,6 +28,8 @@ export const OrderContext = createContext<IOrderProps>({
     null,
   orderProductNameArr: [],
   orderArray: [],
+  setArray: ([]) => null,
+  setTotal: (value: number) => null,
   total: 0,
 });
 
@@ -118,7 +122,9 @@ export default function OrderContextProvider({ children }: ChildrenProps) {
         handleAddToCartButton,
         orderProductNameArr,
         orderArray,
+        setArray,
         total,
+        setTotal,
       }}
     >
       {children}

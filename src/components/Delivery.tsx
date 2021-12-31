@@ -1,34 +1,34 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { DeliveryContext, IDeliveryContact } from "../contexts/DeliveryContext";
+import LandingPage from "./LandingPage";
 
-interface DeliveryContact {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  address: string;
-  unit: string;
-  country: string;
-  state: string;
-  city: string;
-  suburb: string;
-  postCode: string;
-}
-export default function Shipping() {
-  let [firstName, setFirstName] = useState<string>("");
-  let [lastName, setLastName] = useState<string>("");
-  let [email, setEmail] = useState<string>("");
-  let [phone, setPhone] = useState<string>("");
-  let [address, setAddress] = useState<string>("");
-  let [unit, setUnit] = useState<string>("");
-  let [country, setCountry] = useState<string>("");
-  let [state, setState] = useState<string>("");
-  let [city, setCity] = useState<string>("");
-  let [suburb, setSuburb] = useState<string>("");
-  let [postCode, setPostCode] = useState<string>("");
-  let [deliveryContact, setDeliveryContact] = useState<DeliveryContact | null>(
-    null
-  );
+export default function Delivery() {
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
+  const [unit, setUnit] = useState<string>("");
+  const [country, setCountry] = useState<string>("");
+  const [state, setState] = useState<string>("");
+  const [city, setCity] = useState<string>("");
+  const [suburb, setSuburb] = useState<string>("");
+  const [postCode, setPostCode] = useState<string>("");
+  const { delivery, setDelivery } = useContext(DeliveryContext);
+  let deliveryDetails: IDeliveryContact = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    address: "",
+    unit: "",
+    country: "",
+    state: "",
+    city: "",
+    suburb: "",
+    postCode: "",
+  };
 
   // Functions
   function getFirstName(ev: React.ChangeEvent<HTMLInputElement>) {
@@ -77,7 +77,7 @@ export default function Shipping() {
 
   function submitDeliveryContact(ev: React.MouseEvent<HTMLButtonElement>) {
     // ev.preventDefault();
-    setDeliveryContact({
+    deliveryDetails = {
       firstName,
       lastName,
       email,
@@ -89,16 +89,13 @@ export default function Shipping() {
       city,
       suburb,
       postCode,
-    });
-    console.log(deliveryContact);
+    };
+    setDelivery([...delivery, deliveryDetails]);
   }
 
   return (
     <div className="w-full grid gap-y-4">
-      <h1 className="font-semibold h-12 bg-gray-500 text-white pl-2">
-        DELIVERY CONTACT
-      </h1>
-
+      <h1 className="text-2xl font-bold py-2">Delivery Contact</h1>
       <div className="grid grid-cols-2 gap-4 h-12">
         <input
           className="border-2 h-12 pl-2"
@@ -181,13 +178,13 @@ export default function Shipping() {
         type="text"
         onChange={getPostCode}
       ></input>
-      <Link to="/payment">
+      <Link to="/review">
         <button
           type="submit"
           className="button bg-transparent font-bold py-2 px-4 rounded-full"
           onClick={submitDeliveryContact}
         >
-          Next
+          Review and Pay
         </button>
       </Link>
     </div>

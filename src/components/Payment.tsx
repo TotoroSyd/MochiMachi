@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { OrderContext } from "../contexts/OrderContext";
 
 interface PaymentDetails {
   cardName: string;
@@ -16,6 +17,7 @@ export default function Payment() {
   let [expYear, setExpYear] = useState<string>("");
   let [cvc, setCvc] = useState("");
   let [payment, setPayment] = useState<PaymentDetails | null>(null);
+  const { setArray, setTotal } = useContext(OrderContext);
 
   // Functions
   function getCardName(ev: React.ChangeEvent<HTMLInputElement>) {
@@ -39,17 +41,16 @@ export default function Payment() {
   }
 
   function submitPaymentDetails(ev: React.MouseEvent<HTMLButtonElement>) {
-    // No ev.preventDefault(); to allow Review page to load
+    // No ev.preventDefault(); to allow Order Confirmation page to load
     setPayment({ cardName, cardNumber, expDate, expYear, cvc });
-    console.log(payment);
+    setArray([]);
+    setTotal(0);
+    // eslint-disable-next-line no-restricted-globals
+    location.href = "/";
   }
 
   return (
     <div className="py-6 grid gap-y-4">
-      <h1 className="font-semibold h-12 bg-gray-500 text-white pl-2">
-        PAYMENT DETAILS
-      </h1>
-
       <input
         className="w-full border-2 h-12"
         placeholder="Name on card"
@@ -82,13 +83,13 @@ export default function Payment() {
           onChange={getCvc}
         ></input>
       </div>
-      <Link to="/review">
+      <Link to="/orderconfirmation" target="_blank">
         <button
           type="submit"
           className="button bg-transparent font-bold py-2 px-4 rounded-full"
           onClick={submitPaymentDetails}
         >
-          Review
+          Pay
         </button>
       </Link>
     </div>

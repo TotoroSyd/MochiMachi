@@ -9,9 +9,7 @@ export default function OrderSummary({ orderArr, total }: Props) {
 
   return (
     <div>
-      <h1 className="font-semibold h-12 bg-gray-500 text-white pl-2">
-        ORDER SUMMARY
-      </h1>
+      <h1 className="text-2xl font-bold py-2">Order Summary</h1>
 
       {orderArr.map((el) => {
         return (
