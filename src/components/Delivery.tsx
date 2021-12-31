@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { DeliveryContext, IDeliveryContact } from "../contexts/DeliveryContext";
-import LandingPage from "./LandingPage";
 
 export default function Delivery() {
   const [firstName, setFirstName] = useState<string>("");
