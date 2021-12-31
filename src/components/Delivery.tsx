@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { DeliveryContext, IDeliveryContact } from "../contexts/DeliveryContext";
+import { OrderContext } from "../contexts/OrderContext";
 
 export default function Delivery() {
   const [firstName, setFirstName] = useState<string>("");
@@ -15,6 +16,7 @@ export default function Delivery() {
   const [suburb, setSuburb] = useState<string>("");
   const [postCode, setPostCode] = useState<string>("");
   const { delivery, setDelivery } = useContext(DeliveryContext);
+  const { total } = useContext(OrderContext);
   let deliveryDetails: IDeliveryContact = {
     firstName: "",
     lastName: "",
@@ -182,6 +184,7 @@ export default function Delivery() {
           type="submit"
           className="button bg-transparent font-bold py-2 px-4 rounded-full"
           onClick={submitDeliveryContact}
+          disabled={total === 0 ? true : false}
         >
           Review and Pay
         </button>

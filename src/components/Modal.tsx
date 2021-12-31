@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { ModalContext, IModalContextValue } from "../contexts/ModalContext";
 import ProductCard from "./ProductCard";
 

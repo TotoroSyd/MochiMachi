@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { OrderContext, IOrderProps } from "../contexts/OrderContext";
 import Delivery from "./Delivery";
 import OrderSummary from "./OrderSummary";
-import { Link } from "react-router-dom";
 
 export default function CheckOut() {
   const { orderArray, total } = useContext<IOrderProps>(OrderContext);
@@ -21,14 +20,6 @@ export default function CheckOut() {
         </form>
         <div className="flex flex-col gap-y-10">
           {<OrderSummary orderArr={orderArray} total={total}></OrderSummary>}
-          {/* <Link to="/review">
-            <button
-              type="submit"
-              className="button bg-transparent font-bold py-2 px-4 rounded-full"
-            >
-              REVIEW
-            </button>
-          </Link> */}
         </div>
       </div>
     </div>
