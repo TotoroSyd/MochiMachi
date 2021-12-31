@@ -51,12 +51,16 @@ export default function ProductCard(product: Product_props) {
     <div>
       {/* Unused for now because we have modal title */}
       {/* <h2 className="font-semibold text-2xl pb-2">{product.name}</h2> */}
-      <h4>Price: ${product.price}</h4>
-      <span>Description: {product.description}</span>
+      <h4>
+        <span className="font-bold">Price:</span> ${product.price}
+      </h4>
+      <h4>
+        <span className="font-bold">Description:</span> {product.description}
+      </h4>
       <div className="grid grid-cols-2 gap-2 w-28 pt-2 pb-4">
-        <span>QTY</span>
+        <span className="font-bold">Quantity</span>
         {/* Quantity box */}
-        <div className="grid grid-cols-3 w-16 border-2 border-gray-300 rounded-md">
+        <div className="grid grid-cols-3 w-16 border-2 border-gray-300 rounded-md mx-4">
           <button
             className="text-center border-r-2 border-gray-300"
             type="button"
