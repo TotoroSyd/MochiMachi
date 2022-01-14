@@ -1,5 +1,5 @@
-import linkedin_logo from "../media/linkedin logo_icon.svg";
-import medium_logo from "../media/medium logo_icon.svg";
+// import linkedin_logo from "../media/linkedin logo_icon.svg";
+// import medium_logo from "../media/medium logo_icon.svg";
 import github_icon from "../media/github_repository_icon.svg";
 
 export default function Footer() {
@@ -15,20 +15,20 @@ export default function Footer() {
             width="45"
           />
         </a>
-        <a href="linkedin.com/in/phoebenguyenn" className="h-full">
+        {/* <a href="linkedin.com/in/phoebenguyenn" className="h-full">
           <img
             src={linkedin_logo}
             alt="linkedin logo linked to Phoebe's linkedin profile"
             className="h-full"
           />
-        </a>
-        <a href="phoebephuongnguyen.medium.com/" className="h-full">
+        </a> */}
+        {/* <a href="phoebephuongnguyen.medium.com/" className="h-full">
           <img
             src={medium_logo}
             alt="phoebe's medium blog"
             className="h-full"
           />
-        </a>
+        </a> */}
       </div>
     </div>
   );
