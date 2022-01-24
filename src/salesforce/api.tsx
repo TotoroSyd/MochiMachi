@@ -1,7 +1,8 @@
 export {};
-
+// Adding required library/module
 const express = require("express");
 const jsforce = require("jsforce");
+
 // Get environement variables from .env file using dotenv
 require("dotenv").config();
 const { SF_USERNAME, SF_PASSWORD, SF_TOKEN, SF_LOGIN_URL } = process.env;
@@ -12,6 +13,7 @@ if (!(SF_USERNAME && SF_PASSWORD && SF_TOKEN && SF_LOGIN_URL)) {
   );
   process.exit(-1);
 }
+
 // Start connecting to Salesforce org
 const conn = new jsforce.Connection({
   loginUrl: SF_LOGIN_URL,
@@ -22,6 +24,8 @@ conn.login(SF_USERNAME, SF_PASSWORD + SF_TOKEN, (err: any) => {
     process.exit(-1);
   }
 });
+
+//Create server app with Express
 const app = express();
 const port = 3000;
 // Basic set up Express
@@ -59,6 +63,7 @@ app.get("/api/sessions", (req: any, res: any) => {
   });
 });
 
+// Server listening
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
