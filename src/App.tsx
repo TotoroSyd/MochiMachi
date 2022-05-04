@@ -10,8 +10,9 @@ import ModalContextProvider from "./contexts/ModalContext";
 import OrderContextProvider from "./contexts/OrderContext";
 import DeliveryContextProvider from "./contexts/DeliveryContext";
 import OrderConfirmation from "./components/OrderConfirmation";
-
+import SConnection from "./salesforce/connection";
 function App() {
+  // SConnection();
   return (
     <ModalContextProvider>
       <OrderContextProvider>
