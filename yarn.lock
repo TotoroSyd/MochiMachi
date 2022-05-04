@@ -8336,10 +8336,10 @@ node-releases@^2.0.1:
   resolved "https://registry.npmjs.org/node-releases/-/node-releases-2.0.1.tgz"
   integrity sha512-CqyzN6z7Q6aMeF/ktcMVTzhAHCEpf8SOarwpzpf8pNBY2k5/oM34UHldUwp8VKI7uxct2HxSRdJjBaZeESzcxA==
 
-node@^12.22.0:
-  version "12.22.8"
-  resolved "https://registry.yarnpkg.com/node/-/node-12.22.8.tgz#47f86bd52c7d232e6bf3d8b0c0cb71a27be200cd"
-  integrity sha512-ETOqD2wa1ZJdIehU0kw8DPNGTQwe9AegwZ4fVFc1z8SuefptEk2JgJr78lJWFBp2PD6Y/4fl02DJ2sdZIWLAQA==
+node@^17.4.0:
+  version "17.4.0"
+  resolved "https://registry.yarnpkg.com/node/-/node-17.4.0.tgz#946f480c8bc08720cfdb3f6681b8f8c913a6c8e0"
+  integrity sha512-/kPlbyQjDJa9NEOPmKSTmHOxgq+7wAMWNdU+8B9cXseQXTaF3xYAiYc9dCh3fDUxnrLR/DIqiYEQ85ICqSya8A==
   dependencies:
     node-bin-setup "^1.0.0"
 

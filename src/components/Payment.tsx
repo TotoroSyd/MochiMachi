@@ -46,7 +46,7 @@ export default function Payment() {
     setArray([]);
     setTotal(0);
     // eslint-disable-next-line no-restricted-globals
-    location.href = "/";
+    location.href = "/orderconfirmation";
   }
 
   return (
