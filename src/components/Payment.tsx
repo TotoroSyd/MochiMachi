@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { OrderContext } from "../contexts/OrderContext";
-import CreateContract from "../components/Fetch";
+import CreateContract from "../components/CreateContract";
 interface PaymentDetails {
   cardName: string;
   cardNumber: string;
