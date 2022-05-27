@@ -1,10 +1,5 @@
 export default async function CreateContract() {
   // POST to create contract record (and account record if new customer)
-  interface fetchOp {
-    method: string;
-    headers: { [key: string]: string };
-    body: any;
-  }
 
   interface PromiseRes {
     id: string;
@@ -12,13 +7,19 @@ export default async function CreateContract() {
     errors: string;
   }
 
+  let _data = {
+    title: "test passing data",
+    body: "bar",
+  };
+
   let url = "http://localhost:3001/createContract";
-  let options: fetchOp = {
-    method: "post",
+  let options = {
+    method: "POST",
     headers: {
-      "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+      // "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+      "Content-Type": "application/json",
     },
-    body: "test creating contract from MochiMachi",
+    body: JSON.stringify(_data),
   };
 
   // function status(response: PromiseRes) {
