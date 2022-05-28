@@ -15,8 +15,8 @@ export default function Delivery() {
   const [city, setCity] = useState<string>("");
   const [suburb, setSuburb] = useState<string>("");
   const [postCode, setPostCode] = useState<string>("");
+  const [isNewCust, setIsNewCust] = useState<boolean>(false);
   const { delivery, setDelivery } = useContext(DeliveryContext);
-  const { setIsNewCust } = useContext(DeliveryContext);
   const { total } = useContext(OrderContext);
   let deliveryDetails: IDeliveryContact = {
     firstName: "",
@@ -30,6 +30,7 @@ export default function Delivery() {
     city: "",
     suburb: "",
     postCode: "",
+    isNewCust: false,
   };
 
   // Functions
@@ -95,6 +96,7 @@ export default function Delivery() {
       city,
       suburb,
       postCode,
+      isNewCust,
     };
     setDelivery([...delivery, deliveryDetails]);
   }
