@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { OrderContext } from "../contexts/OrderContext";
-import CreateContract from "../components/CreateContract";
+import { DeliveryContext } from "../contexts/DeliveryContext";
+import CreateContract from "../salesforce/CreateContract";
 interface PaymentDetails {
   cardName: string;
   cardNumber: string;
@@ -18,7 +19,7 @@ export default function Payment() {
   let [cvc, setCvc] = useState("");
   let [payment, setPayment] = useState<PaymentDetails | null>(null);
   const { setArray, setTotal } = useContext(OrderContext);
-
+  const { delivery } = useContext(DeliveryContext);
   // Functions
   function getCardName(ev: React.ChangeEvent<HTMLInputElement>) {
     setCardName(ev.target.value);
@@ -49,7 +50,7 @@ export default function Payment() {
     // eslint-disable-next-line no-restricted-globals
     // location.href = "/orderconfirmation";
     // handle respone from fetchcreatecontract
-    let res = await CreateContract();
+    let res = await CreateContract(delivery);
     console.log("createContractRes: ", res);
   }
 
