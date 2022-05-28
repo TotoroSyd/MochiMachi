@@ -20,8 +20,7 @@ export interface IDeliveryContact {
 
 export interface IDeliveryContextValue {
   delivery: Array<IDeliveryContact>;
-  // eslint-disable-next-line no-empty-pattern
-  setDelivery: (value: []) => void;
+  setDelivery: (value: IDeliveryContact[]) => void;
   isNewCust: boolean;
   setIsNewCust: (value: boolean) => void;
 }
@@ -29,7 +28,7 @@ export interface IDeliveryContextValue {
 // Export context object
 export const DeliveryContext = createContext<IDeliveryContextValue>({
   delivery: [],
-  setDelivery: ([]) => null,
+  setDelivery: (value: IDeliveryContact[]) => null,
   isNewCust: false,
   setIsNewCust: (value: boolean) => null,
 });
