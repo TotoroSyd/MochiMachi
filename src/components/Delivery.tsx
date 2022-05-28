@@ -16,6 +16,7 @@ export default function Delivery() {
   const [suburb, setSuburb] = useState<string>("");
   const [postCode, setPostCode] = useState<string>("");
   const { delivery, setDelivery } = useContext(DeliveryContext);
+  const { setIsNewCust } = useContext(DeliveryContext);
   const { total } = useContext(OrderContext);
   let deliveryDetails: IDeliveryContact = {
     firstName: "",
@@ -76,6 +77,10 @@ export default function Delivery() {
     setPostCode(ev.target.value);
   }
 
+  function isNewCustomer(ev: React.MouseEvent<HTMLInputElement>) {
+    setIsNewCust(true);
+  }
+
   function submitDeliveryContact(ev: React.MouseEvent<HTMLButtonElement>) {
     // ev.preventDefault();
     deliveryDetails = {
@@ -97,6 +102,16 @@ export default function Delivery() {
   return (
     <div className="w-full grid gap-y-4">
       <h1 className="text-2xl font-bold py-2">Delivery Contact</h1>
+      <div>
+        <input
+          type="checkbox"
+          value="true"
+          name="isNewCust"
+          id="isNewCust"
+          onClick={isNewCustomer}
+        ></input>
+        <label htmlFor="isNewCust">I am a new customer.</label>
+      </div>
       <div className="grid grid-cols-2 gap-4 h-12">
         <input
           className="border-2 h-12 pl-2"

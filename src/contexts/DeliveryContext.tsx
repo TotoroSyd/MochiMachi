@@ -20,22 +20,29 @@ export interface IDeliveryContact {
 
 export interface IDeliveryContextValue {
   delivery: Array<IDeliveryContact>;
-  setDelivery: ([]) => void;
+  setDelivery: (value: IDeliveryContact[]) => void;
+  isNewCust: boolean;
+  setIsNewCust: (value: boolean) => void;
 }
 
 // Export context object
 export const DeliveryContext = createContext<IDeliveryContextValue>({
   delivery: [],
-  setDelivery: ([]) => null,
+  setDelivery: (value: IDeliveryContact[]) => null,
+  isNewCust: false,
+  setIsNewCust: (value: boolean) => null,
 });
 
 // Context wrapper component
 // export default function ModalContextProvider({ children }) - js style
 export default function DeliveryContextProvider({ children }: ChildrenProps) {
   const [delivery, setDelivery] = useState<IDeliveryContact[]>([]);
+  const [isNewCust, setIsNewCust] = useState(false);
   // console.log("delivery", delivery);
   return (
-    <DeliveryContext.Provider value={{ delivery, setDelivery }}>
+    <DeliveryContext.Provider
+      value={{ delivery, setDelivery, isNewCust, setIsNewCust }}
+    >
       {children}
     </DeliveryContext.Provider>
   );

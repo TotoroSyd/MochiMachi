@@ -49,7 +49,6 @@ export default function Payment() {
     // eslint-disable-next-line no-restricted-globals
     // location.href = "/orderconfirmation";
     // handle respone from fetchcreatecontract
-
     let res = await CreateContract();
     console.log("createContractRes: ", res);
   }
