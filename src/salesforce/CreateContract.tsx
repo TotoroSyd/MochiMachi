@@ -33,8 +33,7 @@ export default async function CreateContract(data: Array<IDeliveryContact>) {
   //Handle promise
   try {
     fetchPromise = await fetch(url, options);
-    console.log(fetchPromise);
-    return fetchPromise.json();
+    return await fetchPromise.json();
   } catch (error) {
     console.log("Request failed", error);
   }
