@@ -1,11 +1,11 @@
 import { IDeliveryContact } from "../contexts/DeliveryContext";
 export default async function CreateContract(data: Array<IDeliveryContact>) {
   // POST to create contract record (and account record if new customer)
-  interface PromiseRes {
-    id: string;
-    success: boolean;
-    errors: string;
-  }
+  // interface PromiseRes {
+  //   id: string;
+  //   success: boolean;
+  //   errors: string;
+  // }
 
   let url = "http://localhost:3001/createContract";
   let options = {
@@ -33,15 +33,9 @@ export default async function CreateContract(data: Array<IDeliveryContact>) {
   //Handle promise
   try {
     fetchPromise = await fetch(url, options);
+    console.log(fetchPromise);
     return fetchPromise.json();
   } catch (error) {
     console.log("Request failed", error);
   }
-
-  // await fetch(url, options)
-  //   .then(status)
-  //   .then(jsonn)
-  //   .catch((error: any) => {
-  //     console.log("Request failed", error);
-  //   });
 }
