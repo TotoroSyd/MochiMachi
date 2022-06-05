@@ -16,7 +16,7 @@ export interface IDeliveryContact {
   city: string;
   suburb: string;
   postCode: string;
-  isNewCust: boolean;
+  // isNewCust: boolean;
 }
 
 export interface IDeliveryContextValue {
