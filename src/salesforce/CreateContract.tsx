@@ -7,7 +7,7 @@ export default async function CreateContract(data: Array<IDeliveryContact>) {
     errors: string;
   }
 
-  let url = "http://localhost:3001/createContract";
+  let url = "http://localhost:3001/contract/create";
   let options = {
     method: "POST",
     headers: {
@@ -17,25 +17,14 @@ export default async function CreateContract(data: Array<IDeliveryContact>) {
     body: JSON.stringify(data[0]),
   };
 
-  // function status(response: PromiseRes) {
-  //   // Check status and return resolve or reject
-  //   if (response.success) {
-  //     return Promise.resolve(response);
-  //   } else {
-  //     return Promise.reject(new Error(response.errors));
-  //   }
-  // }
-  // function jsonn(response: any) {
-  //   return response.json();
-  // }
-
-  let fetchPromise;
-  //Handle promise
+  //Handle response
   try {
-    fetchPromise = await fetch(url, options);
-
-    return await fetchPromise.json();
+    let response = await fetch(url, options);
+    if (response.ok) {
+      return await response.json();
+    }
   } catch (error) {
     console.log("Request failed", error);
+    return new Error();
   }
 }
