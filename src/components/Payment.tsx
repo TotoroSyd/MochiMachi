@@ -18,8 +18,10 @@ export default function Payment() {
   let [expYear, setExpYear] = useState<string>("");
   let [cvc, setCvc] = useState("");
   let [payment, setPayment] = useState<PaymentDetails | null>(null);
-  const { setArray, setTotal } = useContext(OrderContext);
+  const { orderProductNameArr, orderArray, total, setArray, setTotal } =
+    useContext(OrderContext);
   const { delivery } = useContext(DeliveryContext);
+
   // Functions
   function getCardName(ev: React.ChangeEvent<HTMLInputElement>) {
     setCardName(ev.target.value);
@@ -50,8 +52,10 @@ export default function Payment() {
     // eslint-disable-next-line no-restricted-globals
     // location.href = "/orderconfirmation";
     // handle respone from fetchcreatecontract
-    let res = await CreateContract(delivery);
-    console.log("createContractRes: ", res);
+    let data = [...delivery, total];
+    // let res = await CreateContract(delivery);
+    // console.log("createContractRes: ", res);
+    console.log(data);
   }
 
   return (
