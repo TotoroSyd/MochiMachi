@@ -7,28 +7,28 @@ export default function Delivery() {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
+  const [phone, setPhone] = useState<number>(123);
   const [address, setAddress] = useState<string>("");
-  const [unit, setUnit] = useState<string>("");
+  const [unit, setUnit] = useState<number>(12);
   const [country, setCountry] = useState<string>("");
   const [state, setState] = useState<string>("");
   const [city, setCity] = useState<string>("");
   const [suburb, setSuburb] = useState<string>("");
-  const [postCode, setPostCode] = useState<string>("");
+  const [postCode, setPostCode] = useState<number>(1234);
   const { delivery, setDelivery } = useContext(DeliveryContext);
   const { total } = useContext(OrderContext);
   let deliveryDetails: IDeliveryContact = {
     firstName: "",
     lastName: "",
     email: "",
-    phone: "",
+    phone: 123,
     address: "",
-    unit: "",
+    unit: 12,
     country: "",
     state: "",
     city: "",
     suburb: "",
-    postCode: "",
+    postCode: 1234,
   };
 
   // Functions
@@ -45,7 +45,7 @@ export default function Delivery() {
   }
 
   function getPhone(ev: React.ChangeEvent<HTMLInputElement>) {
-    setPhone(ev.target.value);
+    setPhone(Number(ev.target.value));
   }
 
   function getAddress(ev: React.ChangeEvent<HTMLInputElement>) {
@@ -53,7 +53,7 @@ export default function Delivery() {
   }
 
   function getUnit(ev: React.ChangeEvent<HTMLInputElement>) {
-    setUnit(ev.target.value);
+    setUnit(Number(ev.target.value));
   }
 
   function getCountry(ev: React.ChangeEvent<HTMLInputElement>) {
@@ -73,7 +73,7 @@ export default function Delivery() {
   }
 
   function getPostCode(ev: React.ChangeEvent<HTMLInputElement>) {
-    setPostCode(ev.target.value);
+    setPostCode(Number(ev.target.value));
   }
 
   function submitDeliveryContact(ev: React.MouseEvent<HTMLButtonElement>) {

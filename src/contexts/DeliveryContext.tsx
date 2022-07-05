@@ -8,14 +8,14 @@ export interface IDeliveryContact {
   firstName: string;
   lastName: string;
   email: string;
-  phone: string;
+  phone: number;
   address: string;
-  unit: string;
+  unit: number;
   country: string;
   state: string;
   city: string;
   suburb: string;
-  postCode: string;
+  postCode: number;
 }
 
 export interface IDeliveryContextValue {
@@ -33,7 +33,7 @@ export const DeliveryContext = createContext<IDeliveryContextValue>({
 // export default function ModalContextProvider({ children }) - js style
 export default function DeliveryContextProvider({ children }: ChildrenProps) {
   const [delivery, setDelivery] = useState<IDeliveryContact[]>([]);
-  console.log("delivery", delivery);
+  // console.log("delivery", delivery);
   return (
     <DeliveryContext.Provider value={{ delivery, setDelivery }}>
       {children}

@@ -21,6 +21,9 @@ export default function Payment() {
   const { orderProductNameArr, orderArray, total, setArray, setTotal } =
     useContext(OrderContext);
   const { delivery } = useContext(DeliveryContext);
+  // data includes Array of object delivery, Array of object orderArray, Number total
+  // data to pass into createContract for POST request
+  let data = [delivery, orderArray, total];
 
   // Functions
   function getCardName(ev: React.ChangeEvent<HTMLInputElement>) {
@@ -43,19 +46,25 @@ export default function Payment() {
     setCvc(ev.target.value);
   }
 
-  function submitPaymentDetails(ev: React.MouseEvent<HTMLButtonElement>) {
+  async function submitPaymentDetails(ev: React.MouseEvent<HTMLButtonElement>) {
     // No ev.preventDefault(); to allow Order Confirmation page to load
     ev.preventDefault();
     setPayment({ cardName, cardNumber, expDate, expYear, cvc });
-    setArray([]);
-    setTotal(0);
+
+    // only reset when there is reply from createcontract
+    // let res = await CreateContract(delivery);
+    let res = await CreateContract(data);
+    let rest = 1;
+    if (rest === 2) {
+      setArray([]);
+      setTotal(0);
+    } else {
+      return;
+    }
+
     // eslint-disable-next-line no-restricted-globals
     // location.href = "/orderconfirmation";
     // handle respone from fetchcreatecontract
-    console.log("Try to print data here");
-
-    // let res = await CreateContract(delivery);
-    // let res = await CreateContract(data);
   }
 
   return (
