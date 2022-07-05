@@ -43,7 +43,7 @@ export default function Payment() {
     setCvc(ev.target.value);
   }
 
-  async function submitPaymentDetails(ev: React.MouseEvent<HTMLButtonElement>) {
+  function submitPaymentDetails(ev: React.MouseEvent<HTMLButtonElement>) {
     // No ev.preventDefault(); to allow Order Confirmation page to load
     ev.preventDefault();
     setPayment({ cardName, cardNumber, expDate, expYear, cvc });
@@ -52,10 +52,10 @@ export default function Payment() {
     // eslint-disable-next-line no-restricted-globals
     // location.href = "/orderconfirmation";
     // handle respone from fetchcreatecontract
-    let data = [...delivery, total];
+    console.log("Try to print data here");
+
     // let res = await CreateContract(delivery);
-    // console.log("createContractRes: ", res);
-    console.log(data);
+    // let res = await CreateContract(data);
   }
 
   return (

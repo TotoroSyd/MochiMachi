@@ -16,7 +16,6 @@ export interface IDeliveryContact {
   city: string;
   suburb: string;
   postCode: string;
-  // isNewCust: boolean;
 }
 
 export interface IDeliveryContextValue {
@@ -34,7 +33,7 @@ export const DeliveryContext = createContext<IDeliveryContextValue>({
 // export default function ModalContextProvider({ children }) - js style
 export default function DeliveryContextProvider({ children }: ChildrenProps) {
   const [delivery, setDelivery] = useState<IDeliveryContact[]>([]);
-  // console.log("delivery", delivery);
+  console.log("delivery", delivery);
   return (
     <DeliveryContext.Provider value={{ delivery, setDelivery }}>
       {children}
