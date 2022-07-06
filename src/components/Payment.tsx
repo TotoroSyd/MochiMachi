@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { OrderContext } from "../contexts/OrderContext";
-import { DeliveryContext } from "../contexts/DeliveryContext";
+// import { DeliveryContext } from "../contexts/DeliveryContext";
 import CreateContract from "../salesforce/CreateContract";
 interface PaymentDetails {
   cardName: string;
@@ -20,10 +20,7 @@ export default function Payment() {
   let [payment, setPayment] = useState<PaymentDetails | null>(null);
   const { orderProductNameArr, orderArray, total, setArray, setTotal } =
     useContext(OrderContext);
-  const { delivery } = useContext(DeliveryContext);
-  // data includes Array of object delivery, Array of object orderArray, Number total
-  // data to pass into createContract for POST request
-  let data = [delivery, orderArray, total];
+  // const { delivery } = useContext(DeliveryContext);
 
   // Functions
   function getCardName(ev: React.ChangeEvent<HTMLInputElement>) {
@@ -53,7 +50,7 @@ export default function Payment() {
 
     // only reset when there is reply from createcontract
     // let res = await CreateContract(delivery);
-    let res = await CreateContract(data);
+    // let res = await CreateContract(data);
     let rest = 1;
     if (rest === 2) {
       setArray([]);

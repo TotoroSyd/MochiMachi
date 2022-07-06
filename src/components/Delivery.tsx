@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { DeliveryContext, IDeliveryContact } from "../contexts/DeliveryContext";
 import { OrderContext } from "../contexts/OrderContext";
+import { ContractContext, IContractData } from "../contexts/ContractContext";
 
 export default function Delivery() {
   const [firstName, setFirstName] = useState<string>("");
@@ -16,7 +17,9 @@ export default function Delivery() {
   const [suburb, setSuburb] = useState<string>("");
   const [postCode, setPostCode] = useState<number>(1234);
   const { delivery, setDelivery } = useContext(DeliveryContext);
-  const { total } = useContext(OrderContext);
+  const { orderProductNameArr, orderArray, total } = useContext(OrderContext);
+  const { contractData, setContractData } = useContext(ContractContext);
+
   let deliveryDetails: IDeliveryContact = {
     firstName: "",
     lastName: "",
@@ -29,6 +32,21 @@ export default function Delivery() {
     city: "",
     suburb: "",
     postCode: 1234,
+  };
+  let contractDetails: IContractData = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: 123,
+    address: "",
+    unit: 12,
+    country: "",
+    state: "",
+    city: "",
+    suburb: "",
+    postCode: 1234,
+    total: 100,
+    orderArray: [],
   };
 
   // Functions
@@ -92,6 +110,22 @@ export default function Delivery() {
       postCode,
     };
     setDelivery([...delivery, deliveryDetails]);
+    contractDetails = {
+      firstName,
+      lastName,
+      email,
+      phone,
+      address,
+      unit,
+      country,
+      state,
+      city,
+      suburb,
+      postCode,
+      total,
+      orderArray,
+    };
+    setContractData([...contractData, contractDetails]);
   }
 
   return (
