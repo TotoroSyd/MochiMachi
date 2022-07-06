@@ -18,7 +18,7 @@ export interface IContractData {
   suburb: string;
   postCode: number;
   total: number;
-  orderList: Array<IOrder>;
+  orderArray: Array<IOrder>;
 }
 
 export interface IContractContextValue {
@@ -27,7 +27,7 @@ export interface IContractContextValue {
 }
 
 // Export context object
-export const ContractContext = createContext({
+export const ContractContext = createContext<IContractContextValue>({
   contractData: [],
   setContractData: (value: IContractData[]) => null,
 });
