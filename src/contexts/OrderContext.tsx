@@ -7,6 +7,8 @@ interface ChildrenProps {
 export interface IOrder {
   product: string;
   quantity: number;
+  unitPrice: number;
+  productSFId: string;
   subtt: number;
 }
 
@@ -39,7 +41,8 @@ export default function OrderContextProvider({ children }: ChildrenProps) {
   const [orderArray, setArray] = useState<IOrder[]>([]);
   const [total, setTotal] = useState<number>(0);
   const [orderProductNameArr, setOrderProductNameArr] = useState<string[]>([]);
-  const { getPrice } = useContext<IModalContextValue>(ModalContext);
+  const { getPrice, getProductSFId } =
+    useContext<IModalContextValue>(ModalContext);
 
   // Functions
   function handleAddToCartButton(
@@ -48,6 +51,8 @@ export default function OrderContextProvider({ children }: ChildrenProps) {
   ): void {
     let order: IOrder = {
       product: "product",
+      unitPrice: 15,
+      productSFId: "0xxx",
       quantity: 2,
       subtt: 28,
     };
@@ -58,6 +63,8 @@ export default function OrderContextProvider({ children }: ChildrenProps) {
       // capture order details
       order.product = product;
       order.quantity = productTocart[product];
+      order.productSFId = getProductSFId(product);
+      order.unitPrice = getPrice(product);
       // cal subtotal of the order
       order.subtt = calSubTotal(order);
       // add order to order array (cart)
@@ -71,6 +78,8 @@ export default function OrderContextProvider({ children }: ChildrenProps) {
       // capture order details
       order.product = product;
       order.quantity = productTocart[product];
+      order.productSFId = getProductSFId(product);
+      order.unitPrice = getPrice(product);
       // cal subtotal of the order
       order.subtt = calSubTotal(order);
       // update quantity and sub total in order array (cart)

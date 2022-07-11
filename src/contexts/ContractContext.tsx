@@ -1,4 +1,4 @@
-import { createContext, useState } from "React";
+import { createContext, useState } from "react";
 import { IOrder } from "./OrderContext";
 // Reference why we use React.ReactNode for children https://www.carlrippon.com/react-children-with-typescript/
 interface ChildrenProps {
@@ -32,7 +32,7 @@ export const ContractContext = createContext<IContractContextValue>({
   setContractData: (value: IContractData[]) => null,
 });
 
-export default function ContractContextProvider(children: ChildrenProps) {
+export default function ContractContextProvider({ children }: ChildrenProps) {
   const [contractData, setContractData] = useState<IContractData[]>([]);
   return (
     <ContractContext.Provider value={{ contractData, setContractData }}>

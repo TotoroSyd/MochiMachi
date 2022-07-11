@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { ContractContext } from "../contexts/ContractContext";
 import { OrderContext } from "../contexts/OrderContext";
-// import { DeliveryContext } from "../contexts/DeliveryContext";
 import CreateContract from "../salesforce/CreateContract";
 interface PaymentDetails {
   cardName: string;
@@ -18,9 +18,8 @@ export default function Payment() {
   let [expYear, setExpYear] = useState<string>("");
   let [cvc, setCvc] = useState("");
   let [payment, setPayment] = useState<PaymentDetails | null>(null);
-  const { orderProductNameArr, orderArray, total, setArray, setTotal } =
-    useContext(OrderContext);
-  // const { delivery } = useContext(DeliveryContext);
+  const { setArray, setTotal } = useContext(OrderContext);
+  const { contractData } = useContext(ContractContext);
 
   // Functions
   function getCardName(ev: React.ChangeEvent<HTMLInputElement>) {
@@ -47,10 +46,10 @@ export default function Payment() {
     // No ev.preventDefault(); to allow Order Confirmation page to load
     ev.preventDefault();
     setPayment({ cardName, cardNumber, expDate, expYear, cvc });
-
+    // console.log(contractData);
     // only reset when there is reply from createcontract
     // let res = await CreateContract(delivery);
-    // let res = await CreateContract(data);
+    let res = await CreateContract(contractData);
     let rest = 1;
     if (rest === 2) {
       setArray([]);

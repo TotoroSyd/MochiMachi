@@ -10,22 +10,28 @@ import ModalContextProvider from "./contexts/ModalContext";
 import OrderContextProvider from "./contexts/OrderContext";
 import DeliveryContextProvider from "./contexts/DeliveryContext";
 import OrderConfirmation from "./components/OrderConfirmation";
-import SConnection from "./salesforce/connection";
+import ContractContextProvider from "./contexts/ContractContext";
+// import SConnection from "./salesforce/connection";
 function App() {
   // SConnection();
   return (
     <ModalContextProvider>
       <OrderContextProvider>
-        <DeliveryContextProvider>
-          <div className="App">
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="checkout" element={<CheckOut />} />
-              <Route path="orderconfirmation" element={<OrderConfirmation />} />
-              <Route path="review" element={<CheckOutReview />} />
-            </Routes>
-          </div>
-        </DeliveryContextProvider>
+        <ContractContextProvider>
+          <DeliveryContextProvider>
+            <div className="App">
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="checkout" element={<CheckOut />} />
+                <Route
+                  path="orderconfirmation"
+                  element={<OrderConfirmation />}
+                />
+                <Route path="review" element={<CheckOutReview />} />
+              </Routes>
+            </div>
+          </DeliveryContextProvider>
+        </ContractContextProvider>
       </OrderContextProvider>
     </ModalContextProvider>
   );

@@ -17,7 +17,7 @@ export default function Delivery() {
   const [suburb, setSuburb] = useState<string>("");
   const [postCode, setPostCode] = useState<number>(1234);
   const { delivery, setDelivery } = useContext(DeliveryContext);
-  const { orderProductNameArr, orderArray, total } = useContext(OrderContext);
+  const { orderArray, total } = useContext(OrderContext);
   const { contractData, setContractData } = useContext(ContractContext);
 
   let deliveryDetails: IDeliveryContact = {
@@ -33,6 +33,7 @@ export default function Delivery() {
     suburb: "",
     postCode: 1234,
   };
+  // Prepare contract data to pass into POST request. Store in ContractContext
   let contractDetails: IContractData = {
     firstName: "",
     lastName: "",

@@ -1,16 +1,11 @@
-import { IDeliveryContact } from "../contexts/DeliveryContext";
-import { IOrder } from "../contexts/OrderContext";
+import { IContractData } from "../contexts/ContractContext";
 
-export default async function CreateContract(
-  data: Array<IDeliveryContact[] | number | IOrder[]>
-) {
+export default async function CreateContract(data: Array<IContractData>) {
   // POST to create contract record (and account record if new customer)
-  interface PromiseRes {
-    id: string;
-    success: boolean;
-    errors: string;
+  if (data.length !== 1) {
+    console.log("Invalid data to create contract");
+    return;
   }
-  console.log("data passed into CreateContract: ", data);
   let url = "http://localhost:3001/contract/create";
   let options = {
     method: "POST",
@@ -18,7 +13,7 @@ export default async function CreateContract(
       // "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(data[0]),
   };
 
   //Handle response
