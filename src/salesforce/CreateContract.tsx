@@ -6,7 +6,8 @@ export default async function CreateContract(data: Array<IContractData>) {
     console.log("Invalid data to create contract");
     return;
   }
-  let url = "http://localhost:3001/contract/create";
+  // let url = "http://localhost:3001/contract/create";
+  let url = "https://mochi-machi-sforce-connection.vercel.app/contract/create";
   let options = {
     method: "POST",
     headers: {
