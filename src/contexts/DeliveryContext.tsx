@@ -8,15 +8,14 @@ export interface IDeliveryContact {
   firstName: string;
   lastName: string;
   email: string;
-  phone: string;
+  phone: number;
   address: string;
-  unit: string;
+  unit: number;
   country: string;
   state: string;
   city: string;
   suburb: string;
-  postCode: string;
-  // isNewCust: boolean;
+  postCode: number;
 }
 
 export interface IDeliveryContextValue {

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { ContractContext } from "../contexts/ContractContext";
 import { OrderContext } from "../contexts/OrderContext";
-import { DeliveryContext } from "../contexts/DeliveryContext";
 import CreateContract from "../salesforce/CreateContract";
 interface PaymentDetails {
   cardName: string;
@@ -18,9 +18,8 @@ export default function Payment() {
   let [expYear, setExpYear] = useState<string>("");
   let [cvc, setCvc] = useState("");
   let [payment, setPayment] = useState<PaymentDetails | null>(null);
-  const { orderProductNameArr, orderArray, total, setArray, setTotal } =
-    useContext(OrderContext);
-  const { delivery } = useContext(DeliveryContext);
+  const { setArray, setTotal } = useContext(OrderContext);
+  const { contractData } = useContext(ContractContext);
 
   // Functions
   function getCardName(ev: React.ChangeEvent<HTMLInputElement>) {
@@ -47,15 +46,20 @@ export default function Payment() {
     // No ev.preventDefault(); to allow Order Confirmation page to load
     ev.preventDefault();
     setPayment({ cardName, cardNumber, expDate, expYear, cvc });
-    setArray([]);
-    setTotal(0);
+    // console.log(contractData);
+    // only reset when there is reply from createcontract
+    // let res = await CreateContract(delivery);
+    let res = await CreateContract(contractData);
+    if (res) {
+      setArray([]);
+      setTotal(0);
+    } else {
+      return;
+    }
+
     // eslint-disable-next-line no-restricted-globals
     // location.href = "/orderconfirmation";
     // handle respone from fetchcreatecontract
-    let data = [...delivery, total];
-    // let res = await CreateContract(delivery);
-    // console.log("createContractRes: ", res);
-    console.log(data);
   }
 
   return (

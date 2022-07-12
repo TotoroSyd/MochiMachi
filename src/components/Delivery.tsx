@@ -2,35 +2,52 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { DeliveryContext, IDeliveryContact } from "../contexts/DeliveryContext";
 import { OrderContext } from "../contexts/OrderContext";
+import { ContractContext, IContractData } from "../contexts/ContractContext";
 
 export default function Delivery() {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
+  const [phone, setPhone] = useState<number>(123);
   const [address, setAddress] = useState<string>("");
-  const [unit, setUnit] = useState<string>("");
+  const [unit, setUnit] = useState<number>(12);
   const [country, setCountry] = useState<string>("");
   const [state, setState] = useState<string>("");
   const [city, setCity] = useState<string>("");
   const [suburb, setSuburb] = useState<string>("");
-  const [postCode, setPostCode] = useState<string>("");
-  // const [isNewCust, setIsNewCust] = useState<boolean>(false);
+  const [postCode, setPostCode] = useState<number>(1234);
   const { delivery, setDelivery } = useContext(DeliveryContext);
-  const { total } = useContext(OrderContext);
+  const { orderArray, total } = useContext(OrderContext);
+  const { contractData, setContractData } = useContext(ContractContext);
+
   let deliveryDetails: IDeliveryContact = {
     firstName: "",
     lastName: "",
     email: "",
-    phone: "",
+    phone: 123,
     address: "",
-    unit: "",
+    unit: 12,
     country: "",
     state: "",
     city: "",
     suburb: "",
-    postCode: "",
-    // isNewCust: false,
+    postCode: 1234,
+  };
+  // Prepare contract data to pass into POST request. Store in ContractContext
+  let contractDetails: IContractData = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: 123,
+    address: "",
+    unit: 12,
+    country: "",
+    state: "",
+    city: "",
+    suburb: "",
+    postCode: 1234,
+    total: 100,
+    orderArray: [],
   };
 
   // Functions
@@ -47,7 +64,7 @@ export default function Delivery() {
   }
 
   function getPhone(ev: React.ChangeEvent<HTMLInputElement>) {
-    setPhone(ev.target.value);
+    setPhone(Number(ev.target.value));
   }
 
   function getAddress(ev: React.ChangeEvent<HTMLInputElement>) {
@@ -55,7 +72,7 @@ export default function Delivery() {
   }
 
   function getUnit(ev: React.ChangeEvent<HTMLInputElement>) {
-    setUnit(ev.target.value);
+    setUnit(Number(ev.target.value));
   }
 
   function getCountry(ev: React.ChangeEvent<HTMLInputElement>) {
@@ -75,12 +92,8 @@ export default function Delivery() {
   }
 
   function getPostCode(ev: React.ChangeEvent<HTMLInputElement>) {
-    setPostCode(ev.target.value);
+    setPostCode(Number(ev.target.value));
   }
-
-  // function isNewCustomer(ev: React.MouseEvent<HTMLInputElement>) {
-  //   setIsNewCust(true);
-  // }
 
   function submitDeliveryContact(ev: React.MouseEvent<HTMLButtonElement>) {
     // ev.preventDefault();
@@ -96,24 +109,30 @@ export default function Delivery() {
       city,
       suburb,
       postCode,
-      // isNewCust,
     };
     setDelivery([...delivery, deliveryDetails]);
+    contractDetails = {
+      firstName,
+      lastName,
+      email,
+      phone,
+      address,
+      unit,
+      country,
+      state,
+      city,
+      suburb,
+      postCode,
+      total,
+      orderArray,
+    };
+    setContractData([...contractData, contractDetails]);
   }
 
   return (
     <div className="w-full grid gap-y-4">
       <h1 className="text-2xl font-bold py-2">Delivery Contact</h1>
-      {/* <div>
-        <input
-          type="checkbox"
-          value="true"
-          name="isNewCust"
-          id="isNewCust"
-          onClick={isNewCustomer}
-        ></input>
-        <label htmlFor="isNewCust">I am a new customer.</label>
-      </div> */}
+
       <div className="grid grid-cols-2 gap-4 h-12">
         <input
           className="border-2 h-12 pl-2"
