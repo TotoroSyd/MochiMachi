@@ -50,8 +50,7 @@ export default function Payment() {
     // only reset when there is reply from createcontract
     // let res = await CreateContract(delivery);
     let res = await CreateContract(contractData);
-    let rest = 1;
-    if (rest === 2) {
+    if (res) {
       setArray([]);
       setTotal(0);
     } else {
