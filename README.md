@@ -28,6 +28,7 @@ An e-commerce demo web app using Salesforce as a databse.
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 <img src="https://jsforce.github.io/images/jsforce-logo-trans.png" width="100" height="50">
+<img src="https://camo.githubusercontent.com/ad3547ec57ee5877eef636f40cd104da8bbc39f4fa2acb9697d2c55663311b1f/68747470733a2f2f6c6f67696e2e73616c6573666f7263652e636f6d2f696d672f6c6f676f3139302e706e67" width="100" height="50">
 ## Salesforce Prep
 ### Create a developer org 
 - You need a developer Salesforce Org to be your sandbox. Create here https://developer.salesforce.com/signup
