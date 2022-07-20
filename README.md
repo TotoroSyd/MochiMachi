@@ -1,5 +1,5 @@
 # MochiMachi 
-An e-commerce demo web app using Salesforce as a databse.
+An e-commerce demo web app using Salesforce as a CRM and database.
 ## I created this project for YOU and ME because...
 - We are hands-on developer and learner who want to practice and show the world that we know to do things.
 ### Description
