@@ -28,7 +28,21 @@ An e-commerce demo web app using Salesforce as a databse.
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 <img src="https://jsforce.github.io/images/jsforce-logo-trans.png" width="100" height="50">
-## Salesforce
+## Salesforce Prep
+### Create a developer org 
+- You need a developer Salesforce Org to be your sandbox. Create here https://developer.salesforce.com/signup
+- **OR** If you have an account in Trailhead (https://trailhead.salesforce.com/en/today/new_user)
+   - Click on your photo profile (top right corner)
+   - "Hands-On Orgs" > Create Playground
+   - Note down your username (email format) and Password
+ ![image](https://user-images.githubusercontent.com/61923601/180001516-b461c169-0ff9-40e9-ab9f-03b9bd76b7c0.png)
+### Objects In Use
+- Account
+- Contract
+- Order
+- Order Item
+- Product
+- Pricebook
 ## Future Work (where you can contribute)
 - Testing
 - Refactor Salesforce integration using OAuth (Currently using username and password for each login which consumes API limit)
@@ -36,18 +50,37 @@ An e-commerce demo web app using Salesforce as a databse.
 - Set up changelog
 - Repeated details on `review Your Order" because states are not cleaned properly
 - Confirmation modal with contract id from Salesforce
-- 
 
+## Clone and no contributing
+To clone and run this application, you'll need Git and Node.js (which comes with npm) installed on your computer. From your command line:
+```bash
+# Clone this repo
+$ git clone https://github.com/TotoroSyd/MochiMachi.git
 
+# Go into the repo in your local
+$ cd <your dir>
 
+# Install dependencies
+$ yarn install
 
+# Run the app
+$ yarn start
+```
+## Start Contributing
+```bash
+# Fork the project
 
+# Create your branch 
+$ git checkout -b feature/AmzingFeature
 
+# Commit your Changes 
+$ git commit -m "Add some Amazing Feature"
 
+# Push to the Branch
+$ git push origin feature/AmazingFeature
 
-
-
-
+# Open a Pull request with tag "enhancement". I will see your request and I will review to merge.
+```
 ## Available Scripts
 
 In the project directory, you can run:
@@ -84,5 +117,5 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-# Acknowledgements
+## Acknowledgements
 
