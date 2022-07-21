@@ -14,6 +14,7 @@ An e-commerce demo web app using Salesforce as a CRM and database.
 
 ## The key focus of this project
   + Salesforce integration via API using JSforce library (username and password)
+  + Programmatic and Declarative programming
   + Object relationships in Salesforce
   + `fetch` and Express framework (Router)
   + TypeScript
