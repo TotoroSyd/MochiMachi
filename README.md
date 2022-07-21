@@ -1,10 +1,12 @@
 # MochiMachi 
 An e-commerce demo web app using Salesforce as a CRM and database.
+
 ## I created this project for YOU and ME because...
 - We are hands-on developer and learner who want to practice and show the world that we know to do things.
 ### Description
 - MochiMachi is a demo for a Mochi shop which has a web app for customers to place orders (buy Mochi). 
 - The data - customers data, order details are stored in Salesforce with its Objects.
+
 ## The key focus of this project
   + Salesforce integration via API using JSforce library 
   + Object relationships in Salesforce
@@ -12,23 +14,37 @@ An e-commerce demo web app using Salesforce as a CRM and database.
   + TypeScript
   + Vercel deployment for front-end
   + Heroku deployment for back-end
+  
 ## Demo
+
 ## Built With
-![image](https://user-images.githubusercontent.com/61923601/179989333-c1e3df95-8b07-4083-be1c-266cee383764.png)
-![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white)
-![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
-![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
-![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=for-the-badge&logo=visual-studio&logoColor=white)
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
-<img src="https://jsforce.github.io/images/jsforce-logo-trans.png" width="100" height="50">
-<img src="https://camo.githubusercontent.com/ad3547ec57ee5877eef636f40cd104da8bbc39f4fa2acb9697d2c55663311b1f/68747470733a2f2f6c6f67696e2e73616c6573666f7263652e636f6d2f696d672f6c6f676f3139302e706e67" width="100" height="50">
+The final product includes two parts (sit in two differnt repos)
+ ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+ ![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=for-the-badge&logo=visual-studio&logoColor=white)
+ ![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white)
+ 
+ <br>
+  1. Front-end: MochiMachi web app where customers make orders, pay and receive confirmation. **This repo** 
+  <br>
+  
+  ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+  ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+  ![image](https://user-images.githubusercontent.com/61923601/179989333-c1e3df95-8b07-4083-be1c-266cee383764.png)
+  ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+  ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+  ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+  ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+  ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+  <br>
+  2. Back-end: Handle HTTP request sent from the Front-end. Act as a middle-ware to make API requests to Salesforce via JSForce library. **https://github.com/TotoroSyd/SFORCE_Connection.git**
+  <br>
+  
+  ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+  ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
+  <img src="https://jsforce.github.io/images/jsforce-logo-trans.png" width="100" height="50">
+  <img  src="https://camo.githubusercontent.com/ad3547ec57ee5877eef636f40cd104da8bbc39f4fa2acb9697d2c55663311b1f/68747470733a2f2f6c6f67696e2e73616c6573666f7263652e636f6d2f696d672f6c6f676f3139302e706e67" width="100" height="50">
+
 ## Salesforce Prep
 ### Create a developer org 
 - You need a developer Salesforce Org to be your sandbox. Create here https://developer.salesforce.com/signup
@@ -37,20 +53,27 @@ An e-commerce demo web app using Salesforce as a CRM and database.
    - "Hands-On Orgs" > Create Playground
    - Note down your username (email format) and Password
  ![image](https://user-images.githubusercontent.com/61923601/180001516-b461c169-0ff9-40e9-ab9f-03b9bd76b7c0.png)
+ 
 ### Objects In Use
+By default the Salesforce app you will get is named **`Sales Console`**. You can rename it if you want. I have a separated note on this step, please follow my Medium post.
+<br>
+Once a customer clicks `Pay`, an Account (stores the customer's information) and related Contract are created (capture order's details). 
+<br>
+These are the **Standard Objects** that are in use:
 - Account
 - Contract
 - Order
 - Order Item
 - Product
 - Pricebook
+
 ## Future Work (where you can contribute)
 - Testing
 - Refactor Salesforce integration using OAuth (Currently using username and password for each login which consumes API limit)
 - Screen responsiveness
 - Set up changelog
 - Repeated details on `review Your Order" because states are not cleaned properly
-- Confirmation modal with contract id from Salesforce
+- Confirmation after payment with contract id from Salesforce
 
 ## Clone and no contributing
 To clone and run this application, you'll need Git and Node.js (which comes with npm) installed on your computer. From your command line:
@@ -118,5 +141,6 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
 ## Acknowledgements
 
