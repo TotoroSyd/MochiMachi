@@ -1,14 +1,19 @@
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/61923601/180132335-e2578666-1c4d-4a8d-81dd-2bae63dd4d86.png" width="200" height="200">
+</p>
+
 # MochiMachi 
 An e-commerce demo web app using Salesforce as a CRM and database.
 
-## I created this project for YOU and ME because...
-- We are hands-on developer and learner who want to practice and show the world that we know to do things.
+## I think you should fork this and work on this project with me because...
+- You are a hands-on developer and learner who want to practice and show the world that you know how to work with Salesforce API (and other tech I listed below)
 ### Description
 - MochiMachi is a demo for a Mochi shop which has a web app for customers to place orders (buy Mochi). 
 - The data - customers data, order details are stored in Salesforce with its Objects.
 
 ## The key focus of this project
-  + Salesforce integration via API using JSforce library 
+  + Salesforce integration via API using JSforce library (username and password)
   + Object relationships in Salesforce
   + `fetch` and Express framework (Router)
   + TypeScript
@@ -16,6 +21,12 @@ An e-commerce demo web app using Salesforce as a CRM and database.
   + Heroku deployment for back-end
   
 ## Demo
+#### User Interface
+![MochiMachiFrame](https://user-images.githubusercontent.com/61923601/180138303-80071485-7fa4-4023-b181-7882e39f53f3.png)
+<br>
+<br>
+#### Result in Salesforce once a customer clicks `Pay`
+![Frame 2](https://user-images.githubusercontent.com/61923601/180198196-8a5bd1da-3d38-4689-af32-280ac8652a0f.jpeg)
 
 ## Built With
 The final product includes two parts (sit in two differnt repos)
@@ -31,7 +42,7 @@ The final product includes two parts (sit in two differnt repos)
   ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
   ![image](https://user-images.githubusercontent.com/61923601/179989333-c1e3df95-8b07-4083-be1c-266cee383764.png)
   ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-  ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+  ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) `Grid`
   ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
   ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
   ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
@@ -67,13 +78,20 @@ These are the **Standard Objects** that are in use:
 - Product
 - Pricebook
 
+#### Schema Builder
+![SchemaBuilder](https://user-images.githubusercontent.com/61923601/180195440-31d174d9-fbc3-47e0-9c2b-771da9972f59.png)
+
+
 ## Future Work (where you can contribute)
 - Testing
+- Validate `req body` server side using `schema` in `express-validation`
 - Refactor Salesforce integration using OAuth (Currently using username and password for each login which consumes API limit)
 - Screen responsiveness
 - Set up changelog
 - Repeated details on `review Your Order" because states are not cleaned properly
 - Confirmation after payment with contract id from Salesforce
+- Formula field in Contract mirroring/ looking up Total amount calculated from Oder. This is to compare with the total from Web to make sure we charge customers the right amount
+- Triggered-flow to change Order status from `Draft` to `Activated` once `Order Item`s are added. 
 
 ## Clone and no contributing
 To clone and run this application, you'll need Git and Node.js (which comes with npm) installed on your computer. From your command line:
@@ -89,10 +107,25 @@ $ yarn install
 
 # Run the app
 $ yarn start
+
+##
+## Clone another repo 
+$ git clone https://github.com/TotoroSyd/SFORCE_Connection.git
+
+# Go into the repo in your local
+$ cd <your dir>
+
+# Install dependencies
+$ yarn install
+
+# Run the app
+$ node app.js
 ```
 ## Start Contributing
 ```bash
-# Fork the project
+# Fork the project including two repos
+# https://github.com/TotoroSyd/MochiMachi.git
+# https://github.com/TotoroSyd/SFORCE_Connection.git
 
 # Create your branch 
 $ git checkout -b feature/AmzingFeature
@@ -143,4 +176,10 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Acknowledgements
-
+Updating
+## More documentation
+Updating
+## Contact me
+![GmailBadge](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white) phoebe.ngsyd.dev@gmail.com
+<br>
+Other channels listed in my README Github Profile https://github.com/TotoroSyd
